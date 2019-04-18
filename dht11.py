@@ -58,14 +58,11 @@ class DHT11:
         # we have the bits, calculate bytes
         the_bytes = self.__bits_to_bytes(bits)
 
-        print("dht A")
         # calculate checksum and check
         checksum = self.__calculate_checksum(the_bytes)
         if the_bytes[4] != checksum:
-            print("dht A-error")
             return DHT11Result(DHT11Result.ERR_CRC, 0, 0)
 
-        print("dht B")
         # ok, we have valid data, return it
         return DHT11Result(DHT11Result.ERR_NO_ERROR, the_bytes[2], the_bytes[0])
 
