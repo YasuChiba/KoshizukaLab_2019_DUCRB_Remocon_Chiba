@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 import dht11
 
-LedPin = 7
+LedPin = 11
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
