@@ -17,8 +17,10 @@ def setup():
   GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
 
 def receiveFalling(gpio_pin):
-  print("FALLLL" + str(gpio_pin))
-  pass
+  print("FALLLL  " + str(gpio_pin))
+  time.sleep(1)
+  print("next")
+
 
 def loop():
 	while True:
