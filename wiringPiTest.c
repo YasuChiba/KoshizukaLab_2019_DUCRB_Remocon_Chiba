@@ -11,6 +11,7 @@ int main(void)
 
   for (int i = 0; i < 10; i++)
   {
+    print("ttttt\n");
     digitalWrite(LED_PIN, HIGH);
     sleep(3);
     digitalWrite(LED_PIN, LOW);
