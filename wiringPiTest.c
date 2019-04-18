@@ -3,7 +3,6 @@
 #include <unistd.h>
 
 #define LED_PIN 0
-#define WAIT_TIME 100000 //100000マイクロ秒　＝＝　0.1秒
 
 int main(void)
 {
@@ -14,9 +13,9 @@ int main(void)
   {
     printf("ttttt\n");
     digitalWrite(LED_PIN, HIGH);
-    usleep(WAIT_TIME);
+    delay(10);
     digitalWrite(LED_PIN, LOW);
-    usleep(WAIT_TIME);
+    delay(10)
   }
 
   return 0;
