@@ -13,9 +13,9 @@ int main(void)
   {
     printf("ttttt\n");
     digitalWrite(LED_PIN, HIGH);
-    sleep(3);
+    sleep(0.5);
     digitalWrite(LED_PIN, LOW);
-    sleep(3);
+    sleep(0.5);
   }
 
   return 0;
