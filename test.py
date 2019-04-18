@@ -13,12 +13,8 @@ def setup():
   GPIO.setup(infraredSensorPin, GPIO.OUT)
   GPIO.output(infraredSensorPin, GPIO.HIGH)
   GPIO.setup(infraredReceivingPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+  
   GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
-  GPIO.add_event_detect(infraredReceivingPin, GPIO.RISING, callback=receiveRising)
-
-def receiveRising():
-  print("RISEEE")
-  pass
 
 def receiveFalling():
   print("FALLLL")
