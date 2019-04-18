@@ -2,43 +2,29 @@ import time
 import RPi.GPIO as GPIO
 import dht11
 
+LedPin = 7
 
-COUNT = 100
-PIN = 7
-GPIO.cleanup()
-GPIO.setmode(GPIO.BOARD)
-instance = dht11.DHT11(pin=PIN)
+def setup():
+	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+	GPIO.setup(LedPin, GPIO.OUT)   # Set LedPin's mode is output
+	GPIO.output(LedPin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
 
-
-def printTemperature():
-  result = instance.read()
-  if result.is_valid():
-    print("temperature: " + str(result.temperature))
-  else:
-    print("cannot read temperature")
-
-def main():
-  while True:
-    printTemperature()
-    time.sleep(5)
-
+def loop():
+	while True:
+		print('...led on')
+		GPIO.output(LedPin, GPIO.HIGH)  # led on
+		time.sleep(0.5)
+		print('led off...')
+		GPIO.output(LedPin, GPIO.LOW) # led off
+		time.sleep(0.5)
 
 def destroy():
-	GPIO.cleanup()
+	GPIO.output(LedPin, GPIO.LOW)     # led off
+	GPIO.cleanup()                     # Release resource
 
-if __name__ == '__main__':
+if __name__ == '__main__':     # Program start from here
+	setup()
 	try:
-		main()
-	except KeyboardInterrupt:
-		destroy() 
-
-
-
-
-'''
-for _ in xrange(COUNT):
-    GPIO.output(PIN,True)
-    time.sleep(1.0)
-    GPIO.output(PIN,False)
-    time.sleep(1.0)
-'''
+		loop()
+	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+		destroy()
