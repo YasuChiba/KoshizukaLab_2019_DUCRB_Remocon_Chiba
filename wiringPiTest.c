@@ -9,7 +9,7 @@ int main(void)
   wiringPiSetup();
   pinMode(LED_PIN, OUTPUT);
 
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 1000; i++)
   {
     printf("ttttt\n");
     digitalWrite(LED_PIN, HIGH);
