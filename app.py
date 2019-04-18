@@ -17,4 +17,4 @@ def printTemperature():
 
 while True:
 	printTemperature()
-	timer.sleep(10)
+	time.sleep(10)
