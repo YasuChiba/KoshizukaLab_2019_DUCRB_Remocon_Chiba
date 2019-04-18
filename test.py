@@ -1,32 +1,27 @@
 import time
 import RPi.GPIO as GPIO
+import dht11
 
 
 COUNT = 100
 PIN = 7
+GPIO.cleanup()
 GPIO.setmode(GPIO.BOARD)
+instance = dht11.DHT11(pin=PIN)
 
 
-
-def readDHT11():
-	GPIO.setup(PIN,GPIO.OUT)
-	GPIO.output(PIN, GPIO.HIGH)
-	time.sleep(0.05)
-	GPIO.output(PIN, GPIO.LOW)
-	time.sleep(0.02)
-	GPIO.setup(PIN, GPIO.IN, GPIO.PUD_UP)
-
-	data = []
-	while True:
-		current = GPIO.input(PIN)
-
-
-	pass
-
+def printTemperature():
+  result = instance.read()
+  if result.is_valid():
+    print("temperature: " + str(result.temperature))
+  else:
+    print("cannot read temperature")
 
 def main():
+  while True:
+    printTemperature()
+    timer.sleep(5)
 
-	pass
 
 def destroy():
 	GPIO.cleanup()
