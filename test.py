@@ -20,7 +20,7 @@ def printTemperature():
 def main():
   while True:
     printTemperature()
-    timer.sleep(5)
+    time.sleep(5)
 
 
 def destroy():
