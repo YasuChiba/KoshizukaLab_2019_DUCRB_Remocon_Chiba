@@ -1,6 +1,4 @@
 import time
-
-import timer
 import RPi.GPIO as GPIO
 import dht11
 
