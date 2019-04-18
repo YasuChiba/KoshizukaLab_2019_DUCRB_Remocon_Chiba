@@ -8,11 +8,10 @@ infraredReceivingPin = 37
 
 
 def setup():
-	GPIO.setmode(GPIO.BOARD)  # Numbers GPIOs by physical location
-	GPIO.setup(infraredSensorPin, GPIO.OUT)   # Set infraredSensorPin's mode is output
-	GPIO.output(infraredSensorPin, GPIO.HIGH)  # Set infraredSensorPin high(+3.3V) to off led
+  GPIO.setmode(GPIO.BOARD)
+  GPIO.setup(infraredSensorPin, GPIO.OUT)
+  GPIO.output(infraredSensorPin, GPIO.HIGH)
   GPIO.setup(infraredReceivingPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
   GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
   GPIO.add_event_detect(infraredReceivingPin, GPIO.RISING, callback=receiveRising)
 
