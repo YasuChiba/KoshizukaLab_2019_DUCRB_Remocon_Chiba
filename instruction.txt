@@ -1,0 +1,3 @@
+host name raspberrypi-chiba
+
+ssh pi@raspberrypi-chiba.local
