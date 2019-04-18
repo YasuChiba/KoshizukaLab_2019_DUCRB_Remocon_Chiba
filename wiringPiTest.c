@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define LED_PIN 11
+#define LED_PIN 7
 
 int main(void)
 {
