@@ -8,6 +8,7 @@ infraredReceivingPin = 37
 
 
 def setup():
+  GPIO.cleanup()
   GPIO.setmode(GPIO.BOARD)
   GPIO.setup(infraredSensorPin, GPIO.OUT)
   GPIO.output(infraredSensorPin, GPIO.HIGH)
