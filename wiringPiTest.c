@@ -14,6 +14,7 @@ int main(void)
     digitalWrite(LED_PIN, HIGH);
     sleep(3);
     digitalWrite(LED_PIN, LOW);
+    sleep(3);
   }
 
   return 0;
