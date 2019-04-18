@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 
 
 COUNT = 100
-PIN = 11
+PIN = 7
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(PIN,GPIO.OUT)
 
