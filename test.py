@@ -24,7 +24,7 @@ def receiveFalling(gpio_pin):
 
 def loop():
   while True:
-    print(GPIO.INPUT(infraredReceivingPin))
+    print(GPIO.input(infraredReceivingPin))
   '''
 	while True:
 		#print('...led on')
