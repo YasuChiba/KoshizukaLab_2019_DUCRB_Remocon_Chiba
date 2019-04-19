@@ -8,7 +8,7 @@ int main(void)
 {
   wiringPiSetup();
   pinMode(INFRATED_RECEIVER_PIN, INPUT);
-
+  pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
   int result = 0;
 
   while (1)
