@@ -21,16 +21,33 @@ void useCallback()
 
 void useDigitalRead()
 {
+  int arrayLength = 100;
+  int resultArray[arrayLength][2];
+
   int previousValue = 0;
   int value = 0;
+  int counter = 0;
   while (1)
   {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (previousValue != value)
     {
-      printf("%d     %d\n", value, millis());
+      resultArray[counter][0] = value;
+      resultArray[count][1] = micros();
+      //printf("%d     %d\n", value, millis());
+      counter++;
+
+      if (counter >= arrayLenght)
+      {
+        break;
+      }
     }
     previousValue = value;
+  }
+
+  for (int i = 0; i < arrayLength; i++)
+  {
+    printf("%d  %d \n", resultArray[i][0], resultArray[i][1]);
   }
 }
 
