@@ -23,12 +23,17 @@ void useDigitalRead()
 {
   int arrayLength = 1000;
   int resultArray[arrayLength][2];
+  resultArray[0][0] = 0;
+  resultArray[0][1] = 0;
 
   int previousValue = 0;
   int value = 0;
-  int counter = 0;
+  int counter = 1;
   int previousMills = 0;
   int currentMills = 0;
+
+  int tmpAvg = 0;
+  int tmp = 0;
 
   while (1)
   {
@@ -36,12 +41,19 @@ void useDigitalRead()
     if (previousValue != value)
     {
       currentMills = millis();
-
-      resultArray[counter][0] = value;
-      resultArray[counter][1] = currentMills - previousMills;
+      tmp = currentMills - previousMills;
+      if (tmp - tmpAvg > 60)
+      { //ここまでの平均から大きく離れてるとき
+        resultArray[counter][0] = value;
+        resultArray[counter][1] = currentMills - resultArray[counter - 1][1];
+        counter++;
+      }
+      else
+      {
+        tmpAvg = (tmpAvg + tmp) / 2;
+      }
 
       //printf("%d     %d\n", value, currentMills - previousMills);
-      counter++;
 
       if (counter >= arrayLength)
       {
