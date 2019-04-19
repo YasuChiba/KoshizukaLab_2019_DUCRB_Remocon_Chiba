@@ -14,7 +14,7 @@ int main(void)
   while (1)
   {
     result = digitalRead(INFRATED_RECEIVER_PIN);
-    print("%d\n", result);
+    printf("%d\n", result);
     delay(100);
   }
 
