@@ -38,7 +38,7 @@ void useDigitalRead()
       currentMills = millis();
 
       resultArray[counter][0] = value;
-      resultArray[counter][1] = currecurrentMills - previousMills;
+      resultArray[counter][1] = currentMills - previousMills;
 
       //printf("%d     %d\n", value, currentMills - previousMills);
       counter++;
