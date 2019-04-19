@@ -27,6 +27,9 @@ void useDigitalRead()
   int previousValue = 0;
   int value = 0;
   int counter = 0;
+  int previousMills = 0;
+  int currentMills = 0;
+
   while (1)
   {
     value = digitalRead(INFRATED_RECEIVER_PIN);
@@ -34,13 +37,16 @@ void useDigitalRead()
     {
       //resultArray[counter][0] = value;
       //resultArray[counter][1] = millis();
-      printf("%d     %d\n", value, millis());
+      currentMills = mills();
+
+      printf("%d     %d\n", value, currentMills - previousMills);
       //counter++;
 
       if (counter >= arrayLength)
       {
         break;
       }
+      previousMills = currentMills;
     }
     previousValue = value;
   }
