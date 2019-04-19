@@ -21,7 +21,7 @@ void useCallback()
 
 void useDigitalRead()
 {
-  int arrayLength = 100;
+  int arrayLength = 1000;
   int resultArray[arrayLength][2];
 
   int previousValue = 0;
@@ -35,12 +35,13 @@ void useDigitalRead()
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (previousValue != value)
     {
-      //resultArray[counter][0] = value;
-      //resultArray[counter][1] = millis();
       currentMills = millis();
 
-      printf("%d     %d\n", value, currentMills - previousMills);
-      //counter++;
+      resultArray[counter][0] = value;
+      resultArray[counter][1] = currentMills;
+
+      //printf("%d     %d\n", value, currentMills - previousMills);
+      counter++;
 
       if (counter >= arrayLength)
       {
