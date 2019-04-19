@@ -6,7 +6,7 @@
 
 void fall()
 {
-  print("fall \n");
+  printf("fall \n");
 }
 
 int main(void)
