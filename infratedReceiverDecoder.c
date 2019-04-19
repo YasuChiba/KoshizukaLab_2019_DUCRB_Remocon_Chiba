@@ -28,7 +28,7 @@ void useDigitalRead()
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (previousValue != value)
     {
-      printf("%d     %d\n", result, millis());
+      printf("%d     %d\n", value, millis());
     }
     previousValue = value;
     delay(1);
