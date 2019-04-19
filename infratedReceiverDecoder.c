@@ -21,7 +21,7 @@ void useCallback()
 
 void useDigitalRead()
 {
-  int arrayLength = 100;
+  int arrayLength = 50;
   int resultArray[arrayLength][2];
   resultArray[0][0] = 0;
   resultArray[0][1] = 0;
@@ -45,7 +45,7 @@ void useDigitalRead()
       if (tmp - tmpAvg > 60)
       { //ここまでの平均から大きく離れてるとき
         resultArray[counter][0] = value;
-        resultArray[counter][1] = currentMills - resultArray[counter - 1][1];
+        resultArray[counter][1] = tmp;
         counter++;
       }
       else
