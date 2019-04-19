@@ -21,7 +21,7 @@ int main(void)
   {
     result = digitalRead(INFRATED_RECEIVER_PIN);
     reasultAnalog = analogRead(INFRATED_RECEIVER_PIN);
-    printf("%d:$d     %d\n", result, reasultAnalog, millis());
+    printf("%d:%d     %d\n", result, reasultAnalog, millis());
     delay(100);
   }
 
