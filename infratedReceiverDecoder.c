@@ -33,7 +33,7 @@ void useDigitalRead()
     if (previousValue != value)
     {
       resultArray[counter][0] = value;
-      resultArray[counter][1] = micros();
+      resultArray[counter][1] = millis();
       //printf("%d     %d\n", value, millis());
       counter++;
 
