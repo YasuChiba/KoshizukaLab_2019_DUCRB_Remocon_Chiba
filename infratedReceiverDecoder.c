@@ -32,10 +32,10 @@ void useDigitalRead()
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (previousValue != value)
     {
-      resultArray[counter][0] = value;
-      resultArray[counter][1] = millis();
+      //resultArray[counter][0] = value;
+      //resultArray[counter][1] = millis();
       printf("%d     %d\n", value, millis());
-      counter++;
+      //counter++;
 
       if (counter >= arrayLength)
       {
