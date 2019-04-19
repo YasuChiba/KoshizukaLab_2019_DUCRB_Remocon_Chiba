@@ -31,7 +31,6 @@ void useDigitalRead()
       printf("%d     %d\n", value, millis());
     }
     previousValue = value;
-    delay(1);
   }
 }
 
