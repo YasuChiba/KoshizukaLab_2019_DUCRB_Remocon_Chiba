@@ -9,12 +9,17 @@ void fall()
   printf("fall \n");
 }
 
-int main(void)
+void useCallback()
 {
-  wiringPiSetup();
-  pinMode(INFRATED_RECEIVER_PIN, INPUT);
-  pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
-  //wiringPiISR(INFRATED_RECEIVER_PIN, INT_EDGE_FALLING, *fall);
+  wiringPiISR(INFRATED_RECEIVER_PIN, INT_EDGE_BOTH, *fall);
+  while (1)
+  {
+    delay(1);
+  }
+}
+
+void useDigitalRead()
+{
   int result = 0;
   int reasultAnalog = 0;
   while (1)
@@ -24,6 +29,15 @@ int main(void)
     printf("%d:%d     %d\n", result, reasultAnalog, millis());
     delay(1);
   }
+}
+
+int main(void)
+{
+  wiringPiSetup();
+  pinMode(INFRATED_RECEIVER_PIN, INPUT);
+  pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
+
+  useCallback();
 
   return 0;
 }
