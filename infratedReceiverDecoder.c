@@ -21,7 +21,7 @@ void useCallback()
 
 void useDigitalRead()
 {
-  int arrayLength = 1000;
+  int arrayLength = 100;
   int resultArray[arrayLength][2];
   resultArray[0][0] = 0;
   resultArray[0][1] = 0;
