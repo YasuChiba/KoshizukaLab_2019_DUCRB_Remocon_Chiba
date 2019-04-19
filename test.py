@@ -2,19 +2,19 @@ import time
 import RPi.GPIO as GPIO
 import dht11
 
-infraredSensorPin = 11
-infraredReceivingPin = 37
+infraredSensorPin = 37
+infraredReceivingPin = 11
 
 
 
 def setup():
   GPIO.cleanup()
   GPIO.setmode(GPIO.BOARD)
-  GPIO.setup(infraredSensorPin, GPIO.OUT)
-  GPIO.output(infraredSensorPin, GPIO.HIGH)
+  #GPIO.setup(infraredSensorPin, GPIO.OUT)
+  #GPIO.output(infraredSensorPin, GPIO.HIGH)
   GPIO.setup(infraredReceivingPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
   
-  GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
+  #GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
 
 def receiveFalling(gpio_pin):
   print("FALLLL  " + str(gpio_pin))
@@ -23,6 +23,9 @@ def receiveFalling(gpio_pin):
 
 
 def loop():
+  while True:
+    print(GPIO.INPUT(infraredReceivingPin))
+  '''
 	while True:
 		#print('...led on')
 		GPIO.output(infraredSensorPin, GPIO.HIGH)  # led on
@@ -30,6 +33,7 @@ def loop():
 		#print('led off...')
 		GPIO.output(infraredSensorPin, GPIO.LOW) # led off
 		time.sleep(0.5)
+  '''
 
 def destroy():
 	GPIO.output(infraredSensorPin, GPIO.LOW)     # led off
