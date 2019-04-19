@@ -14,7 +14,7 @@ def setup():
   #GPIO.output(infraredSensorPin, GPIO.HIGH)
   GPIO.setup(infraredReceivingPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
   
-  #GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
+  GPIO.add_event_detect(infraredReceivingPin, GPIO.FALLING, callback=receiveFalling)
 
 def receiveFalling(gpio_pin):
   print("FALLLL  " + str(gpio_pin))
@@ -23,8 +23,7 @@ def receiveFalling(gpio_pin):
 
 
 def loop():
-  while True:
-    print(GPIO.input(infraredReceivingPin))
+  pass
   '''
 	while True:
 		#print('...led on')
@@ -34,7 +33,6 @@ def loop():
 		GPIO.output(infraredSensorPin, GPIO.LOW) # led off
 		time.sleep(0.5)
   '''
-
 def destroy():
 	GPIO.output(infraredSensorPin, GPIO.LOW)     # led off
 	GPIO.cleanup()                     # Release resource
