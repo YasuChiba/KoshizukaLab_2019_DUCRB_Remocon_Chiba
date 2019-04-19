@@ -23,6 +23,8 @@ def receiveFalling(gpio_pin):
 
 
 def loop():
+  while True:
+    time.sleep(0.5)
   pass
   '''
 	while True:
