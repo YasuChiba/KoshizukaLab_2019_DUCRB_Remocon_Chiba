@@ -21,13 +21,16 @@ void useCallback()
 
 void useDigitalRead()
 {
-  int result = 0;
-  int reasultAnalog = 0;
+  int previousValue = 0;
+  int value = 0;
   while (1)
   {
-    result = digitalRead(INFRATED_RECEIVER_PIN);
-    reasultAnalog = analogRead(INFRATED_RECEIVER_PIN);
-    printf("%d:%d     %d\n", result, reasultAnalog, millis());
+    value = digitalRead(INFRATED_RECEIVER_PIN);
+    if (previousValue != value)
+    {
+      printf("%d     %d\n", result, millis());
+    }
+    previousValue = value;
     delay(1);
   }
 }
@@ -38,7 +41,7 @@ int main(void)
   pinMode(INFRATED_RECEIVER_PIN, INPUT);
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
-  useCallback();
-
+  //useCallback();
+  useDigitalRead();
   return 0;
 }
