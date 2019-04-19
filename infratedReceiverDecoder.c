@@ -34,7 +34,7 @@ void useDigitalRead()
     {
       resultArray[counter][0] = value;
       resultArray[counter][1] = millis();
-      //printf("%d     %d\n", value, millis());
+      printf("%d     %d\n", value, millis());
       counter++;
 
       if (counter >= arrayLength)
