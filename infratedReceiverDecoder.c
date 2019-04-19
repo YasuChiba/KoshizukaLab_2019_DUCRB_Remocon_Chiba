@@ -1,9 +1,22 @@
 #include <wiringPi.h>
 #include <stdio.h>
+#include <unistd.h>
 
-#define RECEIVER_PIN 37
+#define INFRATED_RECEIVER_PIN 0
 
 int main(void)
 {
-  wiringPiSetupGpio()
+  wiringPiSetup();
+  pinMode(INFRATED_RECEIVER_PIN, INPUT);
+
+  int result = 0;
+
+  while (1)
+  {
+    result = digitalRead(INFRATED_RECEIVER_PIN);
+    print("%d\n", result);
+    delay(100);
+  }
+
+  return 0;
 }
