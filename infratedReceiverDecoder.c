@@ -15,7 +15,7 @@ void useCallback()
   while (1)
   {
     //printf("%d\n", millis());
-    delay(1);
+    //delay(1);
   }
 }
 
@@ -40,7 +40,7 @@ int main(void)
   pinMode(INFRATED_RECEIVER_PIN, INPUT);
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
-  //useCallback();
-  useDigitalRead();
+  useCallback();
+  //useDigitalRead();
   return 0;
 }
