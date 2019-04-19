@@ -11,7 +11,7 @@ void fall()
 
 void useCallback()
 {
-  wiringPiISR(INFRATED_RECEIVER_PIN, INT_EDGE_BOTH, *fall);
+  wiringPiISR(INFRATED_RECEIVER_PIN, INT_EDGE_FALLING, *fall);
   while (1)
   {
     //printf("%d\n", millis());
