@@ -77,7 +77,7 @@ void printDigitalRead()
   while (1)
   {
     value = digitalRead(INFRATED_RECEIVER_PIN);
-    printf("%s\n",value);
+    printf("%d\n",value);
   }
 }
 
