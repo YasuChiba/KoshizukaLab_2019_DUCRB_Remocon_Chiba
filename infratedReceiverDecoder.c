@@ -47,7 +47,7 @@ void useDigitalRead()
         resultArray[counter][0] = value;
         resultArray[counter][1] = tmp;
         //counter++;
-        printf("%d  %d \n", value, tmp);
+        printf("%d  %d  %d\n", value, tmp,currentMills);
       }
       else
       {
@@ -105,8 +105,8 @@ int main(void)
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  //useDigitalRead();
+  useDigitalRead();
   //printDigitalRead();
-  digitalReadTest();
+  //digitalReadTest();
   return 0;
 }
