@@ -10,12 +10,17 @@ void setup()
 void loop() 
 {
   //digitalWrite(irPIN, HIGH);
- 
+   digitalWrite(irPIN, HIGH);
+   delayMicroseconds(100);
+   digitalWrite(irPIN, LOW);
+   delayMicroseconds(100);
+  /*
   for (int i = 0; i < 50; i++) { 
     digitalWrite(irPIN, HIGH);
-   // delayMicroseconds(10000);
+   // delayMicroseconds(100);
     //digitalWrite(irPIN, LOW);
-   // delayMicroseconds(10000);
+   // delayMicroseconds(100);
   }
+  */
  
 }
