@@ -30,8 +30,8 @@ void useDigitalRead(int minimumDuration, int arrayLength)
   int previousValue = 0;
   int value = 0;
   int counter = 1;
-  int previousMills = 0;
-  int currentMills = 0;
+  int previousTime = 0;
+  int currentTime = 0;
 
   int tmpAvg = 0;
   int tmp = 0;
@@ -41,28 +41,28 @@ void useDigitalRead(int minimumDuration, int arrayLength)
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (previousValue != value)
     {
-      currentMills = millis();
-      tmp = currentMills - previousMills;
+      currentTime = micros();
+      tmp = currentTime - previousTime;
       if (tmp - tmpAvg > minimumDuration)
       { //ここまでの平均から大きく離れてるとき
         resultArray[counter][0] = value;
         resultArray[counter][1] = tmp;
-        resultArray[counter][2] = currentMills;
+        resultArray[counter][2] = currentTime;
         counter++;
-        //printf("%d  %d  %d\n", value, tmp,currentMills);
+        //printf("%d  %d  %d\n", value, tmp,currentTime);
       }
       else
       {
         tmpAvg = (tmpAvg + tmp) / 2;
       }
 
-      //printf("%d     %d\n", value, currentMills - previousMills);
+      //printf("%d     %d\n", value, currentTime - previousTime);
 
       if (counter >= arrayLength)
       {
         break;
       }
-      previousMills = currentMills;
+      previousTime = currentTime;
     }
     previousValue = value;
   }
@@ -76,13 +76,13 @@ void useDigitalRead(int minimumDuration, int arrayLength)
 void digitalReadTest() {
   int value = 0;
   int prevValue = 0;
-  int currentMills = 0;
+  int currentTime = 0;
 
   while(1) {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (value != prevValue) {
-      currentMills = millis();
-      printf("%d  %d\n", value, currentMills);
+      currentTime = millis();
+      printf("%d  %d\n", value, currentTime);
     }
     prevValue = value;
   }
