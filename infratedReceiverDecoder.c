@@ -149,9 +149,12 @@ void printDigitalRead()
     //printf("%d\n",value);
     delayMicroseconds(10);
   }
+  printf("start\n");
   for(int i=0; i< arrayLength; i++) {
     printf("%d\n", array[i]);
   }
+  printf("end \n");
+  printf("\n");
 }
 
 
