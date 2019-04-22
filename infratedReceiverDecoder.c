@@ -1,6 +1,7 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #define INFRATED_RECEIVER_PIN 0
 
@@ -106,7 +107,7 @@ int main(int argc, char *argv[])
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  useDigitalRead((int)argv[1], (int)argv[2]);
+  useDigitalRead(atoi(argv[1]), atoi(argv[2]));
   //printDigitalRead();
   //digitalReadTest();
   return 0;
