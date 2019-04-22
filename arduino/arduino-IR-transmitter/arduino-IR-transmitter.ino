@@ -9,18 +9,13 @@ void setup()
 
 void loop() 
 {
-  //digitalWrite(irPIN, HIGH);
-   digitalWrite(irPIN, HIGH);
-   delayMicroseconds(100);
-   digitalWrite(irPIN, LOW);
-   delayMicroseconds(100);
-  /*
-  for (int i = 0; i < 50; i++) { 
+  
+  for (int i = 0; i < 50000; i++) { 
     digitalWrite(irPIN, HIGH);
-   // delayMicroseconds(100);
-    //digitalWrite(irPIN, LOW);
-   // delayMicroseconds(100);
+    delay(3);
+    digitalWrite(irPIN, LOW);
+    delay(3);
   }
-  */
+ 
  
 }

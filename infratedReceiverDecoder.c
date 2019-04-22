@@ -82,7 +82,7 @@ void digitalReadTest() {
   while(1) {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (value != prevValue) {
-      currentTime = micros();
+      currentTime = millis();
       printf("%d  %d  %d\n", value,currentTime - prevTime, currentTime);
       prevTime = currentTime;
     }
