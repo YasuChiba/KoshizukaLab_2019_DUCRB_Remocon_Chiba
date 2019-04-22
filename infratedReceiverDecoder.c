@@ -107,8 +107,8 @@ int main(int argc, char *argv[])
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  useDigitalRead(atoi(argv[1]), atoi(argv[2]));
-  //printDigitalRead();
+  //useDigitalRead(atoi(argv[1]), atoi(argv[2]));
+  printDigitalRead();
   //digitalReadTest();
   return 0;
 }
