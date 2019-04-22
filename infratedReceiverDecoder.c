@@ -93,7 +93,6 @@ void printDigitalRead()
     value = digitalRead(INFRATED_RECEIVER_PIN);
     printf("%d\n",value);
   }
-  return 0;
 }
 
 
