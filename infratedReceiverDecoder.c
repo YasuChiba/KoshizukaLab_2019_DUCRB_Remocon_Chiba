@@ -91,6 +91,6 @@ int main(void)
 
   //useCallback();
   //useDigitalRead();
-  printDigitalRead()
+  printDigitalRead();
   return 0;
 }
