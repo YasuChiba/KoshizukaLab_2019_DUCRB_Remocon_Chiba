@@ -46,7 +46,8 @@ void useDigitalRead()
       { //ここまでの平均から大きく離れてるとき
         resultArray[counter][0] = value;
         resultArray[counter][1] = tmp;
-        counter++;
+        //counter++;
+        printf("%d  %d \n", value, tmp);
       }
       else
       {
