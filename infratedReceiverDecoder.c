@@ -91,13 +91,17 @@ void digitalReadTest() {
 void printDigitalRead()
 {
   int value = 0;
-  int array[1000];
+  int arrayLength = 1000;
+  int array[arrayLength];
   int counter = 0;
   while (1)
   {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     array[counter] = value;
     counter++;
+    if counter > arrayLength {
+      break;
+    }
     //printf("%d\n",value);
     delayMicroseconds(10);
   }
