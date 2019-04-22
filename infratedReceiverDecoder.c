@@ -84,7 +84,7 @@ void digitalReadTest() {
     if (value != prevValue) {
       currentTime = micros();
       printf("%d  %d  %d\n", value,currentTime - prevTime, currentTime);
-      prevTime = currentTime
+      prevTime = currentTime;
     }
     prevValue = value;
   }
