@@ -91,6 +91,47 @@ void digitalReadTest() {
   }
 }
 
+void decodeTest() {
+  int value = 0;
+  int prevValue = 0;
+  int startTime = 0;
+  int now = 0;
+  int pulseLength = 0;
+
+  int arrayLength = 30;
+  int array[arrayLength][2];
+  int counter = 0;
+
+  value = 1;
+  while(1) {
+    while(value != 0) {
+      value = digitalRead(INFRATED_RECEIVER_PIN);
+    }
+    startTime = micros();
+
+    while(1) {
+      if(value != prevValue) {
+        now = micros();
+        pulseLength = now - startTime;
+        startTime = now;
+        array[counter][0] = prevValue;
+        array[counter][1] = pulseLength;
+        counter++;
+      }
+      if(counter > arrayLength) {
+        break;
+      }
+      prevValue = value;
+      value = digitalRead(INFRATED_RECEIVER_PIN);
+    }
+
+    for(int i = 0; i < arrayLength; i++) {
+      printf("%d   %d\n", array[i][0], array[i][1]);
+    }
+    counter = 0;
+  }
+}
+
 void printDigitalRead()
 {
   int value = 0;
@@ -124,6 +165,7 @@ int main(int argc, char *argv[])
   //useCallback();
   //useDigitalRead(atoi(argv[1]), atoi(argv[2]));
   //printDigitalRead();
-  digitalReadTest();
+  //digitalReadTest();
+  decodeTest();
   return 0;
 }
