@@ -90,7 +90,7 @@ int main(void)
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  //useDigitalRead();
-  printDigitalRead();
+  useDigitalRead();
+  //printDigitalRead();
   return 0;
 }
