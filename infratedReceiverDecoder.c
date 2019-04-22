@@ -21,8 +21,8 @@ void useCallback()
 
 void useDigitalRead()
 {
-  int arrayLength = 50;
-  int resultArray[arrayLength][2];
+  int arrayLength = 100;
+  int resultArray[arrayLength][3];
   resultArray[0][0] = 0;
   resultArray[0][1] = 0;
 
@@ -42,12 +42,13 @@ void useDigitalRead()
     {
       currentMills = millis();
       tmp = currentMills - previousMills;
-      if (tmp - tmpAvg > 60)
+      if (tmp - tmpAvg > arrayLength/4)
       { //ここまでの平均から大きく離れてるとき
         resultArray[counter][0] = value;
         resultArray[counter][1] = tmp;
-        //counter++;
-        printf("%d  %d  %d\n", value, tmp,currentMills);
+        resultArray[counter][1] = currentMills;
+        counter++;
+        //printf("%d  %d  %d\n", value, tmp,currentMills);
       }
       else
       {
@@ -67,7 +68,7 @@ void useDigitalRead()
 
   for (int i = 0; i < arrayLength; i++)
   {
-    printf("%d  %d \n", resultArray[i][0], resultArray[i][1]);
+    printf("%d  %d %d\n", resultArray[i][0], resultArray[i][1],resultArray[i][2]);
   }
 }
 
