@@ -99,7 +99,7 @@ void printDigitalRead()
     value = digitalRead(INFRATED_RECEIVER_PIN);
     array[counter] = value;
     counter++;
-    if counter > arrayLength {
+    if(counter > arrayLength){
       break;
     }
     //printf("%d\n",value);
