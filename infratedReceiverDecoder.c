@@ -85,7 +85,7 @@ void digitalReadTest() {
       currentTime = millis();
       printf("%d  %d  %d\n", value,currentTime - prevTime, currentTime);
       prevTime = currentTime;
-      delayMicroseconds(100);
+      delayMicroseconds(1000);
     }
     prevValue = value;
   }
