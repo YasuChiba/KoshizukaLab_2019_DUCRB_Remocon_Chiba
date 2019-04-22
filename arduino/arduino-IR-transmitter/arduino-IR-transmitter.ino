@@ -13,9 +13,9 @@ void loop()
  
   for (int i = 0; i < 50; i++) { 
     digitalWrite(irPIN, HIGH);
-    delayMicroseconds(100);
-    digitalWrite(irPIN, LOW);
-    delayMicroseconds(100);
+   // delayMicroseconds(10000);
+    //digitalWrite(irPIN, LOW);
+   // delayMicroseconds(10000);
   }
  
 }

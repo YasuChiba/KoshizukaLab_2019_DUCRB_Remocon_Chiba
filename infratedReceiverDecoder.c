@@ -81,7 +81,7 @@ void digitalReadTest() {
   while(1) {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     if (value != prevValue) {
-      currentTime = millis();
+      currentTime = micros();
       printf("%d  %d\n", value, currentTime);
     }
     prevValue = value;
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
 
   //useCallback();
   //useDigitalRead(atoi(argv[1]), atoi(argv[2]));
-  printDigitalRead();
-  //digitalReadTest();
+  //printDigitalRead();
+  digitalReadTest();
   return 0;
 }
