@@ -19,9 +19,9 @@ void useCallback()
   }
 }
 
-void useDigitalRead()
+void useDigitalRead(int minimumDuration, int arrayLength)
 {
-  int arrayLength = 100;
+  //int arrayLength = 100;
   int resultArray[arrayLength][3];
   resultArray[0][0] = 0;
   resultArray[0][1] = 0;
@@ -42,13 +42,13 @@ void useDigitalRead()
     {
       currentMills = millis();
       tmp = currentMills - previousMills;
-      if (tmp - tmpAvg > 20)
+      if (tmp - tmpAvg > minimumDuration)
       { //ここまでの平均から大きく離れてるとき
         resultArray[counter][0] = value;
         resultArray[counter][1] = tmp;
         resultArray[counter][2] = currentMills;
-        //counter++;
-        printf("%d  %d  %d\n", value, tmp,currentMills);
+        counter++;
+        //printf("%d  %d  %d\n", value, tmp,currentMills);
       }
       else
       {
@@ -99,14 +99,14 @@ void printDigitalRead()
 
 
 
-int main(void)
+int main(int argc, char *argv[])
 {
   wiringPiSetup();
   pinMode(INFRATED_RECEIVER_PIN, INPUT);
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  useDigitalRead();
+  useDigitalRead(argv[1], argv[2]);
   //printDigitalRead();
   //digitalReadTest();
   return 0;
