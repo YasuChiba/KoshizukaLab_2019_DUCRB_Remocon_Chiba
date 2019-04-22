@@ -6,3 +6,6 @@ ssh pi@raspberrypi-chiba.local
 
 コンパイル
 gcc -o wiringpitest wiringPiTest.c -I/usr/local/include -L/usr/local/lib -lwiringPi
+
+
+sh gitPush.sh

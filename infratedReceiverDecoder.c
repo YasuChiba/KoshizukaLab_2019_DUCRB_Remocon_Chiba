@@ -70,6 +70,20 @@ void useDigitalRead()
   }
 }
 
+void digitalReadTest() {
+  int value = 0;
+  int prevValue = 0;
+  int currentMills = 0;
+
+  while(1) {
+    value = digitalRead(INFRATED_RECEIVER_PIN);
+    if (value != prevValue) {
+      currentMills = millis();
+      printf("%d  %d\n", value, currentMills);
+    }
+    prevValue = value;
+  }
+}
 
 void printDigitalRead()
 {
@@ -79,6 +93,7 @@ void printDigitalRead()
     value = digitalRead(INFRATED_RECEIVER_PIN);
     printf("%d\n",value);
   }
+  return 0;
 }
 
 
@@ -90,7 +105,8 @@ int main(void)
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  useDigitalRead();
+  //useDigitalRead();
   //printDigitalRead();
+  digitalReadTest();
   return 0;
 }
