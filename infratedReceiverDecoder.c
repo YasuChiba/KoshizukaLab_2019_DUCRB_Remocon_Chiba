@@ -42,13 +42,13 @@ void useDigitalRead()
     {
       currentMills = millis();
       tmp = currentMills - previousMills;
-      if (tmp - tmpAvg > arrayLength/4)
+      if (tmp - tmpAvg > 20)
       { //ここまでの平均から大きく離れてるとき
         resultArray[counter][0] = value;
         resultArray[counter][1] = tmp;
-        resultArray[counter][1] = currentMills;
-        counter++;
-        //printf("%d  %d  %d\n", value, tmp,currentMills);
+        resultArray[counter][2] = currentMills;
+        //counter++;
+        printf("%d  %d  %d\n", value, tmp,currentMills);
       }
       else
       {
