@@ -107,11 +107,11 @@ void decodeTest() {
     while(value != 0) {
       value = digitalRead(INFRATED_RECEIVER_PIN);
     }
-    startTime = micros();
+    startTime = millis();
 
     while(1) {
       if(value != prevValue) {
-        now = micros();
+        now = millis();
         pulseLength = now - startTime;
         startTime = now;
         array[counter][0] = prevValue;
