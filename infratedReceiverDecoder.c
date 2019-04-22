@@ -95,7 +95,7 @@ void printDigitalRead()
   {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     printf("%d\n",value);
-    delayMicroseconds(10)
+    delayMicroseconds(10);
   }
 }
 
