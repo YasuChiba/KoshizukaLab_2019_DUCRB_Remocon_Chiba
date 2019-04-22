@@ -91,7 +91,7 @@ void digitalReadTest() {
 void printDigitalRead()
 {
   int value = 0;
-  int arrayLength = 1000;
+  int arrayLength = 10000;
   int array[arrayLength];
   int counter = 0;
   while (1)
@@ -104,6 +104,9 @@ void printDigitalRead()
     }
     //printf("%d\n",value);
     delayMicroseconds(10);
+  }
+  for(int i=0; i< arrayLength; i++) {
+    printf("%d\n", array[i]);
   }
 }
 
