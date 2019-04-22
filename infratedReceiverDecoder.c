@@ -70,6 +70,19 @@ void useDigitalRead()
   }
 }
 
+
+void printDigitalRead()
+{
+  int value = 0;
+  while (1)
+  {
+    value = digitalRead(INFRATED_RECEIVER_PIN);
+    printf("%s\n",value);
+  }
+}
+
+
+
 int main(void)
 {
   wiringPiSetup();
@@ -77,6 +90,7 @@ int main(void)
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
   //useCallback();
-  useDigitalRead();
+  //useDigitalRead();
+  printDigitalRead()
   return 0;
 }
