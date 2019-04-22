@@ -124,10 +124,13 @@ void decodeTest() {
       prevValue = value;
       value = digitalRead(INFRATED_RECEIVER_PIN);
     }
-
+    printf("start\n");
     for(int i = 0; i < arrayLength; i++) {
       printf("%d   %d\n", array[i][0], array[i][1]);
     }
+    printf("end \n");
+    printf("\n");
+
     counter = 0;
   }
 }
@@ -149,12 +152,9 @@ void printDigitalRead()
     //printf("%d\n",value);
     delayMicroseconds(10);
   }
-  printf("start\n");
   for(int i=0; i< arrayLength; i++) {
     printf("%d\n", array[i]);
   }
-  printf("end \n");
-  printf("\n");
 }
 
 
