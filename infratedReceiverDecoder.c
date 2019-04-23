@@ -150,7 +150,7 @@ void decodeTest2() {
   value = 1;
   while(1) {
     if(value != prevValue) {
-      now = micros();
+      now = millis();
       pulseLength = now - startTime;
       startTime = now;
       //printf("%d  %d  %d\n", prevValue, pulseLength, now);
@@ -165,12 +165,17 @@ void decodeTest2() {
     prevValue = value;
 
     //delayMicroseconds(100);
-    delayMicroseconds(100);
+    delay(1);
     value = digitalRead(INFRATED_RECEIVER_PIN);
     
   }
+
   for(int i = 0; i < arrayLength; i++) {
-    printf("%d  %d  \n", array[i][0], array[i][1]);
+    if(array[i][0] == 0) {
+      printf("%s  %d  \n", "ON", array[i][1]);
+    } else {
+      printf("%s  %d  \n", "OFF", array[i][1]);
+    }
   }
 }
 
