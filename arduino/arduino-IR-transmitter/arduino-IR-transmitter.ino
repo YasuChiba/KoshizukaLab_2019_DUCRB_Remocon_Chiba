@@ -19,15 +19,18 @@ void zero() {
   digitalWrite(irPIN, HIGH);
   delayMicroseconds(500);
   digitalWrite(irPIN, LOW);
-  delayMicroseconds(250);
+  delayMicroseconds(100);
 }
 
 void loop() 
 {
+  /*
   digitalWrite(irPIN, HIGH);
   delay(3);
   digitalWrite(irPIN, LOW);
   delay(3);
+  */
+  
   one();
   one();
   one();
