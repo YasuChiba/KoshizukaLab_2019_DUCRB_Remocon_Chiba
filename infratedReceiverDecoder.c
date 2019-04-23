@@ -142,7 +142,7 @@ void decodeTest2() {
   int now = 0;
   int pulseLength = 0;
 
-  int arrayLength = 100;
+  int arrayLength = 400;
   int array[arrayLength][2];
   int counter = 0;
 
@@ -165,7 +165,7 @@ void decodeTest2() {
     prevValue = value;
 
     //delayMicroseconds(100);
-    delay(1);
+    delay(10);
     value = digitalRead(INFRATED_RECEIVER_PIN);
     
   }
