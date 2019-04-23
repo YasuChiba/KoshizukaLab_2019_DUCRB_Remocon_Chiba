@@ -29,11 +29,13 @@ void loop()
   digitalWrite(irPIN, LOW);
   delay(3);
   one();
-  zero();
   one();
   one();
   one();
+  one();
   zero();
+  one();
   zero();
+  one();
   delay(2000);
 }
