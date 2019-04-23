@@ -165,7 +165,7 @@ void decodeTest2() {
     prevValue = value;
 
     //delayMicroseconds(100);
-    delayMicroseconds(200);
+    delayMicroseconds(100);
     value = digitalRead(INFRATED_RECEIVER_PIN);
     
   }
