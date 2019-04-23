@@ -201,7 +201,13 @@ void printDigitalRead()
   }
 }
 
-
+void toriaezuRead() {
+  int value = 0;
+  while(1) {
+    value = digitalRead(INFRATED_RECEIVER_PIN);
+    printf("%d\n",value);
+  }
+}
 
 int main(int argc, char *argv[])
 {
@@ -214,6 +220,7 @@ int main(int argc, char *argv[])
   //printDigitalRead();
   //digitalReadTest();
   //decodeTest();
-  decodeTest2();
+  //decodeTest2();
+  toriaezuRead();
   return 0;
 }
