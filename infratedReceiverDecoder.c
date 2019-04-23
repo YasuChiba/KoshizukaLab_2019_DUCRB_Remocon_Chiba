@@ -170,7 +170,7 @@ void decodeTest2() {
     
   }
   for(int i = 0; i < arrayLength; i++) {
-    printf("%d  %d  %d\n", array[i][0], array[i][1], array[i][2]);
+    printf("%d  %d  \n", array[i][0], array[i][1]);
   }
 }
 
