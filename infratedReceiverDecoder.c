@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
   //printDigitalRead();
   //digitalReadTest();
   //decodeTest();
-  //decodeTest2();
-  toriaezuRead();
+  decodeTest2();
+  //toriaezuRead();
   return 0;
 }

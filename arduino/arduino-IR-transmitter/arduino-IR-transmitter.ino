@@ -1,36 +1,31 @@
+#include <avr/io.h>
 
-int irPIN = 3;
+#define PWMPin 10
 
-void setup()
-{
-  //DDRD = B00001000; //PIN3をoutputに
-  pinMode(3,OUTPUT);
-  //PORTD = B11111111;
+unsigned int frq = 38000L; // 周波数
+float duty = 0.5; // 指定したいデューティ比
+
+void setup() {
+  pinMode(PWMPin, OUTPUT);
+   // モード指定
+  TCCR1A = 0b00100001;
+  TCCR1B = 0b00010010;
+
+  // TOP値指定
+  OCR1A = (unsigned int)(1000000 / frq);
+
+  // Duty比指定
+  OCR1B = (unsigned int)(1000000 / frq * duty);
 }
 
-void ledOn() {
-  PORTD = B00000001; //PIN3をHIGHに
-  delayMicroseconds(9);
-  PORTD = B00000000; //全PINをLOWに
-  delayMicroseconds(17);
-}
+void loop() {
 
-void loop() 
-{
- 
-  /*
   while(1) {
-    PORTD = B00000001; //PIN3をHIGHに
-    delayMicroseconds(8);
-    PORTD = B00000000; //全PINをLOWに
-    delayMicroseconds(15);
+    pinMode(PWMPin, OUTPUT);
+    delay(100);
+    pinMode(PWMPin, INPUT);
+    delay(100);
   }
-  */
-  for(int i = 0; i < 10000000000; i++) {
-    PORTD = B00000001; //PIN3をHIGHに
-    delayMicroseconds(12);
-    PORTD = B00000000; //全PINをLOWに
-    delayMicroseconds(12);
-  }
-  
+
+ 
 }
