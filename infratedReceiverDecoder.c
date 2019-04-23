@@ -142,20 +142,35 @@ void decodeTest2() {
   int now = 0;
   int pulseLength = 0;
 
+  int arrayLength = 100;
+  int array[arrayLength][2];
+  int counter = 0;
+
+
   value = 1;
   while(1) {
     if(value != prevValue) {
       now = micros();
       pulseLength = now - startTime;
       startTime = now;
-      printf("%d  %d  %d\n", prevValue, pulseLength, now);
+      //printf("%d  %d  %d\n", prevValue, pulseLength, now);
+      array[counter][0] = prevValue;
+      array[counter][1] = pulseLength;
+      array[counter][2] = now;
+      counter++;
+      if(counter > arrayLength) {
+        break;
+      }
     }
     prevValue = value;
 
     //delayMicroseconds(100);
-    delayMicroseconds(10);
+    //delayMicroseconds(10);
     value = digitalRead(INFRATED_RECEIVER_PIN);
     
+  }
+  for(int i = 0; i < arrayLength; i++) {
+    printf("%d  %d  %d\n", array[i][0], array[i][1], array[i][2]);
   }
 }
 
