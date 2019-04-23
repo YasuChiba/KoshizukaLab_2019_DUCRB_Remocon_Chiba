@@ -158,7 +158,7 @@ void decodeTest2() {
       array[counter][1] = pulseLength;
       array[counter][2] = now;
       counter++;
-      if(counter > arrayLength) {
+      if(counter >= arrayLength) {
         break;
       }
     }
