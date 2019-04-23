@@ -145,7 +145,7 @@ void decodeTest2() {
   value = 1;
   while(1) {
     if(value != prevValue) {
-      now = micros();
+      now = millis();
       pulseLength = now - startTime;
       startTime = now;
       printf("%d  %d  %d\n", prevValue, pulseLength, now);
