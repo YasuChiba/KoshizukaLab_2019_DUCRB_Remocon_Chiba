@@ -3,41 +3,34 @@ int irPIN = 3;
 
 void setup()
 {
- Serial.begin(9600);
- pinMode(irPIN, OUTPUT);
- digitalWrite(irPIN, LOW);
+  //DDRD = B00001000; //PIN3をoutputに
+  pinMode(3,OUTPUT);
+  //PORTD = B11111111;
 }
 
-void one() {
-  digitalWrite(irPIN, HIGH);
-  delay(500);
-  digitalWrite(irPIN, LOW);
-  delay(500);
-}
-
-void zero() {
-  digitalWrite(irPIN, HIGH);
-  delay(500);
-  digitalWrite(irPIN, LOW);
-  delay(100);
+void ledOn() {
+  PORTD = B00000001; //PIN3をHIGHに
+  delayMicroseconds(9);
+  PORTD = B00000000; //全PINをLOWに
+  delayMicroseconds(17);
 }
 
 void loop() 
 {
+ 
   /*
-  digitalWrite(irPIN, HIGH);
-  delay(3);
-  digitalWrite(irPIN, LOW);
-  delay(3);
+  while(1) {
+    PORTD = B00000001; //PIN3をHIGHに
+    delayMicroseconds(8);
+    PORTD = B00000000; //全PINをLOWに
+    delayMicroseconds(15);
+  }
   */
-  one();
-  one();
-  one();
-  one();
-  one();
-  zero();
-  one();
-  zero();
-  one();
-  delay(2000);
+  for(int i = 0; i < 10000000; i++) {
+    PORTD = B00000001; //PIN3をHIGHに
+    delayMicroseconds(8);
+    PORTD = B00000000; //全PINをLOWに
+    delayMicroseconds(15);
+  }
+  
 }

@@ -206,6 +206,8 @@ void toriaezuRead() {
   while(1) {
     value = digitalRead(INFRATED_RECEIVER_PIN);
     printf("%d\n",value);
+    delayMicroseconds(100);
+
   }
 }
 
