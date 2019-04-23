@@ -142,7 +142,7 @@ void decodeTest2() {
   int now = 0;
   int pulseLength = 0;
 
-  int arrayLength = 4000;
+  int arrayLength = 1000;
   int array[arrayLength][2];
   int counter = 0;
 

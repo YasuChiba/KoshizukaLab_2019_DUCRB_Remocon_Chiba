@@ -22,9 +22,9 @@ void loop() {
 
   while(1) {
     pinMode(PWMPin, OUTPUT);
-    delay(100);
+    delay(20);
     pinMode(PWMPin, INPUT);
-    delay(100);
+    delay(20);
   }
 
  
