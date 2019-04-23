@@ -145,13 +145,16 @@ void decodeTest2() {
   value = 1;
   while(1) {
     if(value != prevValue) {
-      now = millis();
+      now = micros();
       pulseLength = now - startTime;
       startTime = now;
       printf("%d  %d  %d\n", prevValue, pulseLength, now);
     }
     prevValue = value;
+
+    delayMicroseconds(500);
     value = digitalRead(INFRATED_RECEIVER_PIN);
+    
   }
 }
 
