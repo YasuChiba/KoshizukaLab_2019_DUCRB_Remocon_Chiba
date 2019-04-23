@@ -26,11 +26,11 @@ void loop()
     delayMicroseconds(15);
   }
   */
-  for(int i = 0; i < 10000000; i++) {
+  for(int i = 0; i < 10000000000; i++) {
     PORTD = B00000001; //PIN3をHIGHに
-    delayMicroseconds(8);
+    delayMicroseconds(12);
     PORTD = B00000000; //全PINをLOWに
-    delayMicroseconds(15);
+    delayMicroseconds(12);
   }
   
 }
