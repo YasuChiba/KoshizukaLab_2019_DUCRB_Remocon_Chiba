@@ -10,16 +10,16 @@ void setup()
 
 void one() {
   digitalWrite(irPIN, HIGH);
-  delayMicroseconds(500);
+  delayMicroseconds(1000);
   digitalWrite(irPIN, LOW);
-  delayMicroseconds(500);
+  delayMicroseconds(1000);
 }
 
 void zero() {
   digitalWrite(irPIN, HIGH);
-  delayMicroseconds(500);
+  delayMicroseconds(1000);
   digitalWrite(irPIN, LOW);
-  delayMicroseconds(100);
+  delayMicroseconds(700);
 }
 
 void loop() 
