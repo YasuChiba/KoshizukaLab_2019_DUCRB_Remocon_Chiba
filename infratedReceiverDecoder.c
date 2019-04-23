@@ -149,6 +149,7 @@ void decodeTest2() {
 
   value = 1;
   while(1) {
+    value = digitalRead(INFRATED_RECEIVER_PIN);
     if(value != prevValue) {
       now = millis();
       pulseLength = now - startTime;
@@ -165,9 +166,7 @@ void decodeTest2() {
     prevValue = value;
 
     //delayMicroseconds(100);
-    delay(10);
-    value = digitalRead(INFRATED_RECEIVER_PIN);
-    
+    delay(10);    
   }
 
   for(int i = 0; i < arrayLength; i++) {
