@@ -61,7 +61,6 @@ void decode() {
 
   while(1) {
     waitUntilStartSignal();
-    printf("Start")
     startTime = millis();
     printf("\nStart  \n");
 
