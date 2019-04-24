@@ -99,7 +99,7 @@ void decode() {
         }
         decodeResult = _decode(pulseLength1,pulseLength2, pulseValue1, pulseValue2);
         if(decodeResult == 1) {
-          print("end \n");
+          printf("end \n");
           break;
         }
       }
