@@ -23,7 +23,8 @@ void waitUntilStartSignal() {
   int now = 0;
   int pulseLength = 0;
 
-  int isFirst = 0;
+  int pulseLengthIs100 = 0;
+  int _isCloseEnough = 0;
 
   while(1) {
     value = digitalRead(INFRATED_RECEIVER_PIN);
@@ -31,19 +32,13 @@ void waitUntilStartSignal() {
       now = millis();
       pulseLength = now - startTime;
       startTime = now;
-
-      if(value == 0 && isCloseEnough(100,pulseLength) == 1) {
-        while(1) {
-          value = digitalRead(INFRATED_RECEIVER_PIN);
-          if(value == 1) {
-              now = millis();
-              pulseLength = now - startTime;
-              if(isCloseEnough(100, pulseLength) == 1) {
-                return;
-              } 
-              break;
-          }
-        }
+      _isCloseEnough = isCloseEnough(100,pulseLength);
+      if(_isCloseEnough == 1 && pulseLengthIs100 == 0) {
+        pulseLengthIs100 = 1;
+      } else if (_isCloseEnough == 1 && pulseLengthIs100 == 1) {
+        return;
+      } else {
+        pulseLengthIs100 = 0;
       }
     }
     prevValue = value;
