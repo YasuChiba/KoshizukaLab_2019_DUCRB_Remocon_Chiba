@@ -45,8 +45,19 @@ void waitUntilStartSignal() {
   }
 }
 
-void _decode(int pulseLength1, int pulseLength2) {
+//1: end signal
+int _decode(int pulseLength1, int pulseLength2, int pulseValue1, int pulseValue2) {
   printf("%d  %d\n",pulseLength1,pulseLength2);
+
+  int _isCloseEnough1_100 = isCloseEnough(100,pulseLength1);
+  int _isCloseEnough2_100 = isCloseEnough(100,pulseLength2);
+  
+  if(pulseValue1 == 1 && pulseValue2 == 0) {
+    if(_isCloseEnough1_100 == 1 && _isCloseEnough2_100 == 1) {
+      return 1; 
+    }
+  }
+  return 0;
 }
 
 void decode() {
@@ -57,13 +68,16 @@ void decode() {
   int startTime = 0;
   int now = 0;
   int pulseLength1 = 0;
+  int pulseValue1 = 0;
   int pulseLength2 = 0;
+  int pulseValue2 = 0;
+
+  int decodeResult = 0;
 
   while(1) {
     waitUntilStartSignal();
     startTime = millis();
     printf("\nStart  \n");
-
 
     while(1) {
       value = digitalRead(INFRATED_RECEIVER_PIN);
@@ -72,17 +86,22 @@ void decode() {
         pulseLength1 = now - startTime;
         startTime = now;
         prevValue = value;
+        pulseValue1 = value;
         while(1) {
           value = digitalRead(INFRATED_RECEIVER_PIN);
           if(value != prevValue) {
             now = millis();
             pulseLength2 = now - startTime;
             startTime = now;
+            pulseValue2 = value;
             break;
           }
         }
-        _decode(pulseLength1,pulseLength2);
-
+        decodeResult = _decode(pulseLength1,pulseLength2, pulseValue1, pulseValue2);
+        if(decodeResult == 1) {
+          print("end \n");
+          break;
+        }
       }
       prevValue = value;
     }
