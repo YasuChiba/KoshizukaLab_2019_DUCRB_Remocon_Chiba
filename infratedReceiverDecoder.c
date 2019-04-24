@@ -47,7 +47,7 @@ void waitUntilStartSignal() {
 
 //2: end signal, 3: error
 int _decode(int pulseLength1, int pulseLength2, int pulseValue1, int pulseValue2) {
-  printf("%d  %d\n",pulseLength1,pulseLength2);
+  //printf("%d  %d\n",pulseLength1,pulseLength2);
 
   int _isCloseEnough1_100 = isCloseEnough(100,pulseLength1);
   int _isCloseEnough2_100 = isCloseEnough(50,pulseLength2);
