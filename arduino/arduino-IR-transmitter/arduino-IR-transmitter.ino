@@ -13,24 +13,39 @@ void setup() {
   OCR1A=210;
 }
 
-void startSignal() {
+void on() {
   TCCR1B=0b00011001;
-  delay(100);
+}
+
+void off() {
   TCCR1B=0b00000000;
+}
+
+void startSignal() {
+  on();
+  delay(100);
+  off();
   delay(100);
 }
 
+void endSignal() {
+  on();
+  delay(100);
+  off();
+  delay(50);
+}
+
 void one() {
-  TCCR1B=0b00011001;
+  on();
   delay(20);
-  TCCR1B=0b00000000;
+  off();
   delay(20);
 }
 
 void zero() {
-  TCCR1B=0b00011001;
+  on();
   delay(20);
-  TCCR1B=0b00000000;
+  off();
   delay(10);
 }
 
@@ -39,14 +54,7 @@ void loop() {
     startSignal();
     one();
     one();
-    zero();
-    zero();
-    one();
-    zero();
-    one();
-    zero();
-    startSignal();
-
-    delay(2000);
+    endSignal();
+    delay(5000);
   }
 }
