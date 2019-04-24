@@ -75,6 +75,7 @@ void decode() {
         while(1) {
           value = digitalRead(INFRATED_RECEIVER_PIN);
           if(value != prevValue) {
+            now = millis();
             pulseLength2 = now - startTime;
             startTime = now;
             break;
