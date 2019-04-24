@@ -9,7 +9,7 @@
 
 //Aが基準値。Bがテストされる
 int isCloseEnough(int A, int B) {
-  printf("isCloseEnough %d  %d\n",A,B);
+  //printf("isCloseEnough %d  %d\n",A,B);
   if(A*0.9 <= B && B <= A*1.1) {
     return 1;
   }
@@ -45,13 +45,44 @@ void waitUntilStartSignal() {
   }
 }
 
+void _decode(int pulseLength1, int pulseLength2) {
+  printf("%d  %d\n",pulseLength1,pulseLength2);
+}
+
 void decode() {
+
+  int value = 0;
+  int prevValue = 0;
+
   int startTime = 0;
+  int now = 0;
+  int pulseLength1 = 0;
+  int pulseLength2 = 0;
 
   while(1) {
-    startTime = millis();
     waitUntilStartSignal();
-    printf("%d\n", millis() - startTime);
+    startTime = millis();
+
+    while(1) {
+      value = digitalRead(INFRATED_RECEIVER_PIN);
+      if(value != prevValue) {
+        now = millis();
+        pulseLength1 = now - startTime;
+        startTime = now;
+        prevValue = value;
+        while(1) {
+          value = digitalRead(INFRATED_RECEIVER_PIN);
+          if(value != prevValue) {
+            pulseLength2 = now - startTime;
+            startTime = now;
+            break;
+          }
+        }
+        _decode(pulseLength1,pulseLength2);
+
+      }
+      prevValue = value;
+    }
   }
 }
 
