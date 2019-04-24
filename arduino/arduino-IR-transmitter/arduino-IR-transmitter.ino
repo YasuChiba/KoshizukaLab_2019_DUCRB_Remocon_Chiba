@@ -33,6 +33,9 @@ void endSignal() {
   delay(100);
   off();
   delay(50);
+  on();
+  delay(50);
+  off();
 }
 
 void one() {
@@ -50,11 +53,8 @@ void zero() {
 }
 
 void loop() {
-  while(1) {
-    startSignal();
-    one();
-    one();
-    endSignal();
-    delay(5000);
-  }
+  startSignal();
+  one();
+  endSignal();
+  delay(100000);
 }
