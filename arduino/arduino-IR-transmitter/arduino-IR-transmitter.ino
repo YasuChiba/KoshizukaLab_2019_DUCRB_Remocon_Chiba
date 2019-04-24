@@ -1,22 +1,21 @@
+
+
 #include <avr/io.h>
-
-
 #define PWMPin 10
-
+/*
 void setup() {
   pinMode(PWMPin, OUTPUT);
-  TCCR1A=0b00100010
-  TCCR1B=0b00011001
-  ICR1=420
-  OCR1A=210
-  
+  TCCR1A=0b00100001;
+  TCCR1B=0b00010010;
+  OCR1A = (unsigned int)(1000000 / 38000L);
+  OCR1B=(unsigned int)(1000000 / 19000L)*0.5;
 }
 
 void loop() {
   
 }
+*/
 
-/*
 
 unsigned int frq = 38000L; // 周波数
 float duty = 0.5; // 指定したいデューティ比
@@ -49,15 +48,8 @@ void zero() {
 }
 
 void loop() {
-
-  while(1) {
+  while(1){
     one();
-    zero();
-    one();
-    one();
-    zero();
-
-    
   }
+  
 }
-*/
