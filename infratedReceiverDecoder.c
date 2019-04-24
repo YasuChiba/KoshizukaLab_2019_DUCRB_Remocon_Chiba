@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>                                                             
+
 
 #define INFRATED_RECEIVER_PIN 0
 
@@ -242,11 +244,11 @@ int main(int argc, char *argv[])
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
 
-  if(strcmp(argv[1],"toriaezu")) {
+  if(strcmp(argv[1],"toriaezu") == 0) {
     toriaezuRead();
-  } else if(strcmp(argv[1], "decode2")) {
+  } else if(strcmp(argv[1], "decode2") == 0) {
     decodeTest2();
-  } else if(strcmp(argv[1],"decode3")) {
+  } else if(strcmp(argv[1],"decode3") == 0) {
     decodeTest3();
   }
 
