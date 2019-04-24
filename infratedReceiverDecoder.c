@@ -53,10 +53,9 @@ void decode() {
   int startTime = 0;
 
   while(1) {
-    startTime = mills();
+    startTime = millis();
     waitUntilStartSignal();
-    now = mills();
-    print("%d\n", mills() - startTime);
+    printf("%d\n", millis() - startTime);
   }
 }
 
