@@ -9,6 +9,7 @@
 
 //Aが基準値。Bがテストされる
 int isCloseEnough(int A, int B) {
+  printf("isCloseEnough %d  %d\n",A,B);
   if(A*0.9 <= B && B <= A*1.1) {
     return 1;
   }
