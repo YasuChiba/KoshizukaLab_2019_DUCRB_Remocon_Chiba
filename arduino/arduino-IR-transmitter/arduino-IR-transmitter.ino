@@ -22,8 +22,10 @@ float duty = 0.5; // 指定したいデューティ比
 
 void setup() {
   pinMode(PWMPin, OUTPUT);
+   pinMode(9, OUTPUT);
+
    // モード指定
-  TCCR1A = 0b00100001;
+  TCCR1A = 0b10100001;
   TCCR1B = 0b00010010;
 
   // TOP値指定
@@ -48,8 +50,16 @@ void zero() {
 }
 
 void loop() {
+  TCCR1B = 0b00010010;
+  delay(20);
+  TCCR1B = 0b00000000;
+  delay(20);
+  TCCR1B = 0b00010010;
+
   while(1){
-    one();
+    //TCCR1B = 0b00010010;
+    delay(10);
+    //one();
   }
   
 }

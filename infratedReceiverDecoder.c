@@ -241,13 +241,22 @@ int main(int argc, char *argv[])
   pinMode(INFRATED_RECEIVER_PIN, INPUT);
   pullUpDnControl(INFRATED_RECEIVER_PIN, PUD_UP);
 
+
+  if(strcmp(argv[1],"toriaezu")) {
+    toriaezuRead();
+  } else if(strcmp(argv[1], "decode2")) {
+    decodeTest2();
+  } else if(strcmp(argv[1],"decode3")) {
+    decodeTest3();
+  }
+
   //useCallback();
   //useDigitalRead(atoi(argv[1]), atoi(argv[2]));
   //printDigitalRead();
   //digitalReadTest();
   //decodeTest();
   //decodeTest2();
-  decodeTest3();
+ // decodeTest3();
   //toriaezuRead();
   return 0;
 }
