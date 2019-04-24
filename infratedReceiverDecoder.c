@@ -7,135 +7,59 @@
 
 #define INFRATED_RECEIVER_PIN 0
 
-void fall()
-{
-  printf("edgeChange   %d\n", millis());
+//Aが基準値。Bがテストされる
+int isCloseEnough(int A, int B) {
+  if(A*0.9 <= B && B <= A*1.1) {
+    return 1;
+  }
+  return 0;
 }
 
-void useCallback()
-{
-  wiringPiISR(INFRATED_RECEIVER_PIN, INT_EDGE_BOTH, *fall);
-  while (1)
-  {
-    //printf("%d\n", millis());
-    //delay(1);
-  }
-}
-
-void useDigitalRead(int minimumDuration, int arrayLength)
-{
-  //int arrayLength = 100;
-  int resultArray[arrayLength][3];
-  resultArray[0][0] = 0;
-  resultArray[0][1] = 0;
-
-  int previousValue = 0;
-  int value = 0;
-  int counter = 1;
-  int previousTime = 0;
-  int currentTime = 0;
-
-  int tmpAvg = 0;
-  int tmp = 0;
-
-  while (1)
-  {
-    value = digitalRead(INFRATED_RECEIVER_PIN);
-    if (previousValue != value)
-    {
-      currentTime = micros();
-      tmp = currentTime - previousTime;
-      if (tmp - tmpAvg > minimumDuration)
-      { //ここまでの平均から大きく離れてるとき
-        resultArray[counter][0] = value;
-        resultArray[counter][1] = tmp;
-        resultArray[counter][2] = currentTime;
-        counter++;
-        //printf("%d  %d  %d\n", value, tmp,currentTime);
-      }
-      else
-      {
-        tmpAvg = (tmpAvg + tmp) / 2;
-      }
-
-      //printf("%d     %d\n", value, currentTime - previousTime);
-
-      if (counter >= arrayLength)
-      {
-        break;
-      }
-      previousTime = currentTime;
-    }
-    previousValue = value;
-  }
-
-  for (int i = 0; i < arrayLength; i++)
-  {
-    printf("%d  %d %d\n", resultArray[i][0], resultArray[i][1],resultArray[i][2]);
-  }
-}
-
-void digitalReadTest() {
-  int value = 0;
-  int prevValue = 0;
-  int currentTime = 0;
-  int prevTime = 0;
-
-  while(1) {
-    value = digitalRead(INFRATED_RECEIVER_PIN);
-    if (value != prevValue) {
-      currentTime = millis();
-      printf("%d  %d  %d\n", value,currentTime - prevTime, currentTime);
-      prevTime = currentTime;
-      delayMicroseconds(1000);
-    }
-    prevValue = value;
-  }
-}
-
-void decodeTest() {
+void waitUntilStartSignal() {
   int value = 0;
   int prevValue = 0;
   int startTime = 0;
   int now = 0;
   int pulseLength = 0;
 
-  int arrayLength = 30;
-  int array[arrayLength][2];
-  int counter = 0;
+  int isFirst = 0;
 
-  value = 1;
   while(1) {
-    while(value != 0) {
-      value = digitalRead(INFRATED_RECEIVER_PIN);
-    }
-    startTime = millis();
+    value = digitalRead(INFRATED_RECEIVER_PIN);
+    if(value != prevValue) {
+      now = millis();
+      pulseLength = now - startTime;
+      startTime = now;
 
-    while(1) {
-      if(value != prevValue) {
-        now = millis();
-        pulseLength = now - startTime;
-        startTime = now;
-        array[counter][0] = prevValue;
-        array[counter][1] = pulseLength;
-        counter++;
+      if(value == 0 && isCloseEnough(100,pulseLength) == 1) {
+        while(1) {
+          value = digitalRead(INFRATED_RECEIVER_PIN);
+          if(value == 1) {
+              now = millis();
+              pulseLength = now - startTime;
+              if(isCloseEnough(100, pulseLength) == 1) {
+                return;
+              } 
+              break;
+          }
+        }
       }
-      if(counter > arrayLength) {
-        break;
-      }
-      prevValue = value;
-      value = digitalRead(INFRATED_RECEIVER_PIN);
     }
-    printf("start\n");
-    for(int i = 0; i < arrayLength; i++) {
-      printf("%d   %d\n", array[i][0], array[i][1]);
-    }
-    printf("end \n");
-    printf("\n");
-
-    counter = 0;
+    prevValue = value;
   }
 }
+
+void decode() {
+  int startTime = 0;
+
+  while(1) {
+    startTime = mills();
+    waitUntilStartSignal();
+    now = mills();
+    print("%d\n", mills() - startTime);
+  }
+}
+
 
 void decodeTest2() {
   int value = 0;
@@ -203,30 +127,6 @@ void decodeTest3() {
   }
 }
 
-
-
-void printDigitalRead()
-{
-  int value = 0;
-  int arrayLength = 10000;
-  int array[arrayLength];
-  int counter = 0;
-  while (1)
-  {
-    value = digitalRead(INFRATED_RECEIVER_PIN);
-    array[counter] = value;
-    counter++;
-    if(counter > arrayLength){
-      break;
-    }
-    //printf("%d\n",value);
-    delayMicroseconds(10);
-  }
-  for(int i=0; i< arrayLength; i++) {
-    printf("%d\n", array[i]);
-  }
-}
-
 void toriaezuRead() {
   int value = 0;
   while(1) {
@@ -250,6 +150,8 @@ int main(int argc, char *argv[])
     decodeTest2();
   } else if(strcmp(argv[1],"decode3") == 0) {
     decodeTest3();
+  } else if(strcmp(argv[1], "decode") == 0) {
+    decode();
   }
 
   //useCallback();
