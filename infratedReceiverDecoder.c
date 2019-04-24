@@ -61,7 +61,10 @@ void decode() {
 
   while(1) {
     waitUntilStartSignal();
+    printf("Start")
     startTime = millis();
+    printf("\nStart  \n");
+
 
     while(1) {
       value = digitalRead(INFRATED_RECEIVER_PIN);
