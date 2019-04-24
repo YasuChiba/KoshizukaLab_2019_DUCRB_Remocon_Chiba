@@ -45,19 +45,22 @@ void waitUntilStartSignal() {
   }
 }
 
-//1: end signal
+//2: end signal, 3: error
 int _decode(int pulseLength1, int pulseLength2, int pulseValue1, int pulseValue2) {
   printf("%d  %d\n",pulseLength1,pulseLength2);
 
   int _isCloseEnough1_100 = isCloseEnough(100,pulseLength1);
   int _isCloseEnough2_100 = isCloseEnough(50,pulseLength2);
   
-  if(pulseValue1 == 1 && pulseValue2 == 0) {
-    if(_isCloseEnough1_100 == 1 && _isCloseEnough2_100 == 1) {
-      return 1; 
-    }
+
+  if(isCloseEnough(20,pulseLength1) == 1 && isCloseEnough(10,pulseLength2) == 1) {
+    return 0;
+  } else if(isCloseEnough(20,pulseLength1) == 1 && isCloseEnough(20,pulseLength2) == 1) {
+    return 1;
+  } else if(isCloseEnough(100,pulseLength1) == 1 && isCloseEnough(50,pulseLength2) == 1) {
+    return 2;
   }
-  return 0;
+  return 3;
 }
 
 void decode() {
@@ -99,10 +102,11 @@ void decode() {
           }
         }
         decodeResult = _decode(pulseLength1,pulseLength2, pulseValue1, pulseValue2);
-        if(decodeResult == 1) {
+        if(decodeResult == 2) {
           printf("end \n");
           break;
         }
+        printf("%d  \n", decodeResult);
       }
       prevValue = value;
     }

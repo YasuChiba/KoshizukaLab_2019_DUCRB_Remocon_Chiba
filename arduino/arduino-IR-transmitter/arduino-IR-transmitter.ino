@@ -55,6 +55,11 @@ void zero() {
 void loop() {
   startSignal();
   one();
+  zero();
+  zero();
+  zero();
+  zero();
+  one();
   endSignal();
-  delay(100000);
+  delay(10000);
 }
