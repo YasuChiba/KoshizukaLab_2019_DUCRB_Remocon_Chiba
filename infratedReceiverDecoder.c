@@ -52,7 +52,6 @@ int _decode(int pulseLength1, int pulseLength2, int pulseValue1, int pulseValue2
   int _isCloseEnough1_100 = isCloseEnough(100,pulseLength1);
   int _isCloseEnough2_100 = isCloseEnough(50,pulseLength2);
   
-
   if(isCloseEnough(20,pulseLength1) == 1 && isCloseEnough(10,pulseLength2) == 1) {
     return 0;
   } else if(isCloseEnough(20,pulseLength1) == 1 && isCloseEnough(20,pulseLength2) == 1) {

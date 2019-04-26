@@ -60,6 +60,9 @@ void loop() {
   zero();
   zero();
   one();
+  zero();
+  one();
+  zero();
   endSignal();
   delay(10000);
 }
