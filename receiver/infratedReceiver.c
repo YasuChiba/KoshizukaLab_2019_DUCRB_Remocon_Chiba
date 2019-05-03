@@ -118,7 +118,7 @@ void receive() {
         commands[commandsIndex] = decodeResult;
         commandsIndex += 1;
         if(commandsIndex >= CODE_LENGTH) {
-          printf("error \n");
+          printf("error  %d\n", commandsIndex);
           break;
         }
         printf("%d  \n", decodeResult);
