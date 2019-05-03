@@ -10,7 +10,7 @@ infratedReceiver.o: infratedReceiver.c infratedReceiver.h
 decoder.o: decoder.c decoder.h
 	$(CC) -c $*.c
 
-sendRequest.o: sendRequest.c sendRequest.h
+sendRequest.o: 
 	$(CC) -c $*.c
 
 clean:
