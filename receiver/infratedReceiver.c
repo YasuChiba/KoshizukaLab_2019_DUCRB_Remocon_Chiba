@@ -5,6 +5,7 @@
 #include <string.h>                                                             
 
 #include "decoder.h"
+#include "infratedReceiver.h"
 
 #define INFRATED_RECEIVER_PIN 0
 
