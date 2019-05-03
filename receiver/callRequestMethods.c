@@ -9,6 +9,7 @@
 
 int test()
 {
+    /*
   char command[256];
 
    if (snprintf(command, sizeof(command), "ls -l %s", "test.c") > sizeof(command)-1){
@@ -16,6 +17,9 @@ int test()
     exit(1);
   }
   system(command);
+  */
+
+ system("python sendRequestPython.py 10");
 }
 
 
@@ -23,7 +27,6 @@ void turnOnLight(int roomNumber) {
    // printf("turn on %d\n",roomNumber);
     printf("start turnOnLight\n");
 
-    //system("ls -l test.c");
     test();
     printf("end turnOnLight\n");
 }
