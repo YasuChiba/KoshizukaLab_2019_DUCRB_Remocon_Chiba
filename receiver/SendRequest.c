@@ -6,5 +6,5 @@
 
 void turnOnLight(int roomNumber) {
     printf("turn on %d\n",roomNumber);
-    system("python sendRequestPython.py 100")
+    system("python sendRequestPython.py 100");
 }
