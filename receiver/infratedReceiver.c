@@ -9,6 +9,9 @@
 
 #define INFRATED_RECEIVER_PIN 0
 
+//一つのコマンドの長さ
+const int CODE_LENGTH = 9;
+
 //Aが基準値。Bがテストされる
 int isCloseEnough(int A, int B) {
   //printf("isCloseEnough %d  %d\n",A,B);

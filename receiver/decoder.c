@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "decoder.h"
 
+const int CODE_LENGTH = 9;
 
 void decode(int* array) {
     //printf("turn on %d\n",roomNumber);
