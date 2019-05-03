@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include "decoder.h"
-#include "sendRequest.h"
+#include "callRequestMethods.h"
 #include "header.h"
 
 
