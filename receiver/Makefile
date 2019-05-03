@@ -10,6 +10,9 @@ infratedReceiver.o: infratedReceiver.c infratedReceiver.h
 decoder.o: decoder.c decoder.h
 	$(CC) -c $*.c
 
+sendRequest.o:
+	$(CC) -c $*.c
+
 clean:
 	$(RM) *.o
 	$(RM) receiver

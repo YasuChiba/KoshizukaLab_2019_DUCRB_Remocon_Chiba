@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include "decoder.h"
+#include "sendRequest.h"
 
 void decode(int* array) {
     //printf("turn on %d\n",roomNumber);
@@ -9,6 +10,6 @@ void decode(int* array) {
         printf("%d ",array[i]);
     }
 
-    printf("end decoding \n");
-
+    printf("\n end decoding \n");
+    turnOnLight(3);
 }

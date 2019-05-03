@@ -1,4 +1,6 @@
-#include "SendRequest.h"
+#include "sendRequest.h"
+#include <stdio.h>
+
 
 
 void turnOnLight(int roomNumber) {
