@@ -7,6 +7,6 @@
 void turnOnLight(int roomNumber) {
     printf("turn on %d\n",roomNumber);
 
-    system("ls");
+    system("ls &");
 
 }
