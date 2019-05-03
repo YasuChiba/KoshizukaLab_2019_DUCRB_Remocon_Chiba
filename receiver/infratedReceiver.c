@@ -110,8 +110,8 @@ void receive() {
           printf("end \n");
           break;
         }
-        commands[index] = decodeResult;
-        index++;
+        commands[commandsIndex] = decodeResult;
+        commandsIndex += 1;
         printf("%d  \n", decodeResult);
       }
       prevValue = value;
@@ -162,7 +162,7 @@ int main(int argc, char *argv[])
   if(strcmp(argv[1],"toriaezu") == 0) {
     toriaezuRead();
   } else if(strcmp(argv[1], "receiveTest") == 0) {
-    receiveTest()
+    receiveTest();
   } else if(strcmp(argv[1], "receive") == 0) {
     receive();
   }
