@@ -6,6 +6,7 @@
 
 #include "decoder.h"
 #include "infratedReceiver.h"
+#include "header.h"
 
 #define INFRATED_RECEIVER_PIN 0
 
@@ -79,7 +80,7 @@ void receive() {
 
   int decodeResult = 0;
 
-  int commands[9];
+  int commands[CODE_LENGTH];
   int commandsIndex = 0;
 
   while(1) {
@@ -114,6 +115,10 @@ void receive() {
         }
         commands[commandsIndex] = decodeResult;
         commandsIndex += 1;
+        if(commandsIndex >= CODE_LENGTH) {
+          printf("error \n");
+          break;
+        }
         printf("%d  \n", decodeResult);
       }
       prevValue = value;
