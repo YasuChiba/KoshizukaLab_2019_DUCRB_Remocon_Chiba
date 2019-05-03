@@ -9,8 +9,6 @@
 
 #define INFRATED_RECEIVER_PIN 0
 
-//一つのコマンドの長さ
-const int CODE_LENGTH = 9;
 
 //Aが基準値。Bがテストされる
 int isCloseEnough(int A, int B) {
@@ -81,7 +79,7 @@ void receive() {
 
   int decodeResult = 0;
 
-  int commands[CODE_LENGTH];
+  int commands[9];
   int commandsIndex = 0;
 
   while(1) {
