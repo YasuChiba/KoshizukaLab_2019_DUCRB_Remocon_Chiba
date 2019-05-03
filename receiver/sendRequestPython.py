@@ -9,7 +9,7 @@ def destroy():
 	GPIO.output(ledPin, GPIO.LOW)     # led off
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(13, GPIO.OUT)
+GPIO.setup(ledPin, GPIO.OUT)
 
 GPIO.output(ledPin, GPIO.HIGH)  # led on
 time.sleep(2)
