@@ -7,10 +7,7 @@ import RPi.GPIO as GPIO
 ledPin = 13
 def destroy():
 	GPIO.output(ledPin, GPIO.LOW)     # led off
-	GPIO.cleanup()   
 
-
-GPIO.cleanup()
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(13, GPIO.OUT)
 
