@@ -18,7 +18,7 @@ int test()
 void turnOnLight(int roomNumber) {
     printf("turn on %d\n",roomNumber);
 
-    system("ls -l test.c");
-
+    //system("ls -l test.c");
+    test();
 }
 
