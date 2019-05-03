@@ -20,9 +20,11 @@ int test()
 
 
 void turnOnLight(int roomNumber) {
-    printf("turn on %d\n",roomNumber);
+   // printf("turn on %d\n",roomNumber);
+    printf("start turnOnLight\n");
 
     //system("ls -l test.c");
     test();
+    printf("end turnOnLight\n");
 }
 
