@@ -9,7 +9,8 @@ void turnOnLight(int roomNumber) {
 
     FILE* fp;
     char  buf[1024];
-    char* cmd = "python sendRequestPython.py 10";
+    //char* cmd = "python sendRequestPython.py 10";
+    char* cmd = "/usr/bin/ls -l /";
 
    // printf("result : %d\n",system("python sendRequestPython.py 10"));
     if ((fp = popen(cmd, "r")) != NULL) {
