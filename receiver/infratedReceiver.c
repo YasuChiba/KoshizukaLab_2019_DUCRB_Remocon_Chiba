@@ -6,6 +6,8 @@
 
 #include "decoder.h"
 #include "infratedReceiver.h"
+
+#define HEADER_H_
 #include "header.h"
 
 #define INFRATED_RECEIVER_PIN 0
