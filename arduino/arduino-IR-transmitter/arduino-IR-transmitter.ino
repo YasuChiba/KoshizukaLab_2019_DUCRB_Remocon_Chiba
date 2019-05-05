@@ -64,6 +64,7 @@ void readAllData() {
 
 void sendTest() {
   startSignal();
+
   one();
   zero();
   zero();
@@ -78,7 +79,6 @@ void sendTest() {
 }
 
 void loop() {
-  
   if(Serial.available()) {
     readAllData();
     /*
