@@ -5,7 +5,8 @@ import time
 import RPi.GPIO as GPIO
 
 
-def lightControll(isOn: bool, roomNumber: str):
+#isOn: bool, roomNumber: str
+def lightControll(isOn, roomNumber):
     url = “http://172.26.16.8/api/ducrbcontrol/light/”
     headers = {“Content-Type”: “application/json”}
     putdata = {
