@@ -29,7 +29,7 @@ args = sys.argv
 #args[3] == 305  (room number)
 
 if args[1] == '0':
-    lightControll(args[2] == '0', args[3])
+    lightControll(args[2] == '1', args[3])
 
 
 
