@@ -3,9 +3,26 @@ host name raspberrypi-chiba
 ssh pi@raspberrypi-chiba.local
 
 
+sh gitPush.sh
+
+
+
+wifi経由でのandroidデバッグ
+adb tcpip 4444
+adb connect 172.26.30.6:4444
+
+
+
+
+
+
 
 コンパイル
-gcc -o wiringpitest wiringPiTest.c -I/usr/local/include -L/usr/local/lib -lwiringPi
+//gcc -o wiringpitest wiringPiTest.c -I/usr/local/include -L/usr/local/lib -lwiringPi
+make clean
+make
 
 
-sh gitPush.sh
+
+
+

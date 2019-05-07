@@ -8,12 +8,18 @@ import android.content.IntentFilter
 import android.hardware.usb.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.concurrent.thread
+import android.os.Looper.getMainLooper
+import android.os.Looper.getMainLooper
+
+
+
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -22,6 +28,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var reloadButton: Button? = null
     private var connectButton: Button? = null
     private var sendButton: Button? = null
+    private var typeSpinner: Spinner? = null
+    private var conditionSpinner: Spinner? = null
+    private var roomNumberET: EditText? = null
+
     private var usbManager: UsbManager? = null
     private var arduinoDevice: UsbDevice? = null
     private var connection: UsbDeviceConnection? = null
@@ -100,9 +110,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         connectButton = findViewById(R.id.connectButton) as Button
         sendButton = findViewById(R.id.sendButton) as Button
 
+        typeSpinner = findViewById(R.id.typeSpinner) as Spinner
+        conditionSpinner = findViewById(R.id.conditionSpinner) as Spinner
+        roomNumberET = findViewById(R.id.roomNumberET) as EditText
+
+
         reloadButton?.setOnClickListener(this)
         connectButton?.setOnClickListener(this)
         sendButton?.setOnClickListener(this)
+
+        logTextView?.setText("")
+
+        typeSpinner?.adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, Constants.types)
+        conditionSpinner?.adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, Constants.conditions)
 
 
         permissionIntent = PendingIntent.getBroadcast(this,0,Intent(ARDUINO_USB_PERMISSION),0)
@@ -110,9 +130,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         registerReceiver(usbReceiver, filter)
 
         showDeviceList()
-
-        addLog("onCreate")
-
     }
 
     private fun addLog(s: String) {
@@ -146,11 +163,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun sendData() {
+        val type = typeSpinner?.selectedItem as String
+        val condition = conditionSpinner?.selectedItem as String
+        val roomNumber = Integer.parseInt(roomNumberET?.text.toString())
+
+        var command = ""
+
+        if(type == Constants.types[0]) {
+            command += "0"
+        } else {
+            command += "1"
+        }
+        if(condition == Constants.conditions[0]) {
+            command += "1"
+        } else {
+            command += "0"
+        }
+
+        command += roomNumber
+        //command += ";"
+
+        addLog(type + "  " + condition + "  " + roomNumber)
+        addLog(command)
+
         thread {
-
-            connection!!.bulkTransfer(endpointOUT, "01;".toByteArray(), 3, 0);
-            //connection.close();
-
+            connection!!.bulkTransfer(endpointOUT, "01".toByteArray(), "01".toByteArray().size, 0);
         }
     }
 
