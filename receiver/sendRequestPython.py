@@ -13,13 +13,14 @@ def lightControll(isOn, roomNumber):
         "ucode": "a"+roomNumber,
         "instance": "on" if isOn else "off"
     }
+    print(putdata)
     req = requests.put(url, data=json.dumps(putdata), headers=headers, auth=("koshizukaLab", "8TxgS73KmG"))
     print(req.status_code)
     
 
 print("python called")
 args = sys.argv
-
+print(args)
 #args[1] == 0 => light
 #args[1] == 1 => air conditioner?
 
