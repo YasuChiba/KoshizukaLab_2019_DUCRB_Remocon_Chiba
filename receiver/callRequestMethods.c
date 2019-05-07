@@ -22,12 +22,10 @@ int test()
  system("python sendRequestPython.py 10");
 }
 
+void controllLight(int isTurnOn, int roomNumber) {
+    char command[40] = {'\0'};
 
-void turnOnLight(int roomNumber) {
-   // printf("turn on %d\n",roomNumber);
-    printf("start turnOnLight\n");
-
-    test();
-    printf("end turnOnLight\n");
+    snprintf(command, 7, "python sendRequestPython.py %d %d %d", 0, isTurnOn == 1, roomNumber);
+    printf("%s \n", command);
+    system(command);
 }
-

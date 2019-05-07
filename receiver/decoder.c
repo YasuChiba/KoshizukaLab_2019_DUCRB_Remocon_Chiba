@@ -13,5 +13,5 @@ void decode(int* array) {
     }
 
     printf("\n end decoding \n");
-    turnOnLight(3);
+    controllLight(0,304);
 }

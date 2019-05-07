@@ -1,4 +1,4 @@
 #pragma once
 
 int test();
-void turnOnLight(int) ;
+void controllLight(int, int) ;
