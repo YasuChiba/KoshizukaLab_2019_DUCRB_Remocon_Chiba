@@ -25,7 +25,8 @@ int test()
 void controllLight(int isTurnOn, int roomNumber) {
     char command[40] = {'\0'};
 
-    snprintf(command, 7, "python sendRequestPython.py %d %d %d", 0, isTurnOn == 1, roomNumber);
+    snprintf(command, 40, "python sendRequestPython.py %d %d %d", 0, isTurnOn == 1, roomNumber);
+    printf("start sending light controll command\n");
     printf("%s \n", command);
     system(command);
 }
