@@ -7,13 +7,13 @@ import RPi.GPIO as GPIO
 
 #isOn: bool, roomNumber: str
 def lightControll(isOn, roomNumber):
-    url = “http://172.26.16.8/api/ducrbcontrol/light/”
-    headers = {“Content-Type”: “application/json”}
+    url = "http://172.26.16.8/api/ducrbcontrol/light/"
+    headers = {"Content-Type": "application/json"}
     putdata = {
         "ucode": "a"+roomNumber,
         "instance": "on" if isOn else "off"
     }
-    req = requests.put(url, data=json.dumps(putdata), headers=headers, auth=(‘koshizukaLab’, ‘8TxgS73KmG’))
+    req = requests.put(url, data=json.dumps(putdata), headers=headers, auth=("koshizukaLab", "8TxgS73KmG"))
     print(req.status_code)
     
 
