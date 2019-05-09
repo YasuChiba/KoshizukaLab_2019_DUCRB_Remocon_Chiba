@@ -23,8 +23,8 @@ void decode(int* array) {
     }
 
     roomNumber = bin2dec(array + 2, 9);
-    printf("\n %d %d %d", array[0],array[1],roomNumber);
-    printf("\n end decoding \n");
+    printf("\ndecode result:  %d %d %d\n", array[0],array[1],roomNumber);
+    printf("end decoding \n");
 
     if(array[0] == 0) {
         controllLight(array[1],roomNumber);
