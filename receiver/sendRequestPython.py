@@ -14,8 +14,8 @@ def lightControll(isOn, roomNumber):
         "instance": "on" if isOn else "off"
     }
     print(putdata)
-    #req = requests.put(url, data=json.dumps(putdata), headers=headers, auth=("koshizukaLab", "8TxgS73KmG"))
-    #print(req.status_code)
+    req = requests.put(url, data=json.dumps(putdata), headers=headers, auth=("koshizukaLab", "8TxgS73KmG"))
+    print(req.status_code)
     
 
 print("python called")
