@@ -133,7 +133,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun addLog(s: String) {
-        logTextView?.append("\n"+s)
+        var t = logTextView?.text.toString()
+        t = s + "\n" + t
+        logTextView?.setText(t)
+
         Log.d("TAGGGG",s)
         println(s)
     }
@@ -146,7 +149,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         var str = ""
         for(name in deviceList.keys) {
-            str += name + " " + deviceList[name]!!.vendorId
+            str += name + " " + deviceList[name]!!.vendorId + "\n"
         }
         textView?.setText(str)
     }
@@ -158,7 +161,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
 
-        arduinoDevice = deviceList[deviceList.keys.first()]
+        for(tmp in deviceList.values) {
+            if(tmp.vendorId == 10755) {
+                arduinoDevice = tmp
+                break;
+            }
+        }
+
+        //arduinoDevice = deviceList[deviceList.keys.first()]
         usbManager?.requestPermission(arduinoDevice, permissionIntent)
     }
 
@@ -187,7 +197,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         addLog(command)
 
         thread {
-            connection!!.bulkTransfer(endpointOUT, "01".toByteArray(), "01".toByteArray().size, 0);
+            connection!!.bulkTransfer(endpointOUT, command.toByteArray(), command.toByteArray().size, 0);
         }
     }
 

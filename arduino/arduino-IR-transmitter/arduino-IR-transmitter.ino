@@ -1,28 +1,46 @@
 
 
-#include <avr/io.h>
 #define PWMPin 10
-#define testPin 9
 
 //詳細はever note 参照
 void setup() {
   pinMode(PWMPin, OUTPUT);
-  pinMode(testPin, OUTPUT);
 
+
+/*
   TCCR1A=0b00100010;
   TCCR1B=0b00011001;
+  
   ICR1=420;
   OCR1A=210;
+  */
+
+  
+  unsigned int frq = 38000; // 周波数
+  float duty = 0.5;  
+  TCCR1A = 0b00100001;
+  TCCR1B = 0b00010010;
+ 
+  // TOP値指定
+  OCR1A = (unsigned int)(1000000 / frq);
+ 
+  // Duty比指定
+  OCR1B = (unsigned int)(1000000 / frq * duty);
+  
   off();
+  
   Serial.begin(9600);
 }
 
 void on() {
-  TCCR1B=0b00011001;
+ 
+  TCCR1A = 0b00100001;
+  TCCR1B = 0b00010010;
+  
 }
 
 void off() {
-  TCCR1B=0b00000000;
+  digitalWrite(PWMPin, LOW);
 }
 
 void startSignal() {
@@ -115,33 +133,22 @@ void sendSequence(int* seq,int len) {
 }
 
 void loop() {
+  /*
+  digitalWrite(testPin, HIGH);
+  delay(1000);
+    digitalWrite(testPin, LOW);
+      delay(1000);
+      */
+   
+  
   int seq[11] = {0};
   char buffer[30] = {'\0'};
-  /*
-   buffer[0] = '0';
-   buffer[1] = '1';
-   buffer[2] = '3';
-   buffer[3] = '0';
-   buffer[4] = '5';
-   parseBuffer(buffer, seq);
-   Serial.println(buffer);
-   for(int i = 0; i < 11; i++) {
-       Serial.print(seq[i]);
-
-   }
-   
-   Serial.println("");
-   Serial.println("");
-  delay(3000);
-*/    
   
   if(Serial.available()) {
-    digitalWrite(testPin, HIGH);
     readAllData(buffer);
     parseBuffer(buffer, seq);
     sendSequence(seq, 11);   
-    digitalWrite(testPin, LOW);
-
   }  
+  
   
 }
