@@ -5,19 +5,28 @@
 #include "header.h"
 
 
-int bin2Dec(int *data) {
+int bin2dec(int *data, int length) {
+  int result = 0;
 
+  for(int i = 0; i < length; i++) {
+    result += data[i] * (1 << (length - 1 - i));
+  }
+  return result;
 }
 
 void decode(int* array) {
-    //printf("turn on %d\n",roomNumber);
+    int roomNumber = 0;
+
     printf("start decoding \n");
     for(int i = 0; i < CODE_LENGTH; i++) {
         printf("%d ",array[i]);
     }
+
+    roomNumber = bin2dec(array + 2, 9);
+    printf("\n %d %d %d", array[0],array[1],roomNumber);
     printf("\n end decoding \n");
 
     if(array[0] == 0) {
-        controllLight(array[1],305);
+        controllLight(array[1],roomNumber);
     }
 }
