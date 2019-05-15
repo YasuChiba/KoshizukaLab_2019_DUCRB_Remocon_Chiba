@@ -48,17 +48,19 @@ while(True):
     if counter == 2:
         break
 
+print("----------")
 t = raw_input()
+print("----------")
 
 
 counter = 0
 while(True):
     routerList = getRouterList()
     for tmp in routerList:
-        if tmp.address in routerDict1:
-            routerDict1[tmp.address][1].append(tmp)
+        if tmp.address in routerDict:
+            routerDict[tmp.address][1].append(tmp)
         else:
-            routerDict1[tmp.address] = [[],[tmp]]
+            routerDict[tmp.address] = [[],[tmp]]
 
     counter = counter + 1
     if counter == 2:
