@@ -9,8 +9,8 @@ import time
 class WifiRouter:
     def __init__(self, address, quality, ssid):
         self.address = address 
-        self.quality = quality.split("=")[1].split("/")[0]
-        self.signalLebel = quality.split("  ")[1].split("=")[1].split(" ")[0]
+        self.quality = int(quality.split("=")[1].split("/")[0].strip())
+        self.signalLebel = int(quality.split("  ")[1].split("=")[1].split(" ")[0].strip())
         self.ssid = ssid
     
 def getRouterList():
