@@ -1,6 +1,7 @@
 
 import subprocess as spc
 res=spc.check_output("getsi")
+print res
 lis=res.split()
 ss=lis.index("DUCRB-LAB")
 ss=ss-2
