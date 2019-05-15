@@ -21,6 +21,16 @@ def getRouterList():
     return routerList
 
 
+
+while(True):
+    routerList = getRouterList()
+    for tmp in routerList:
+        print str(tmp.quality) + "  " + tmp.address
+    time.sleep(5)
+
+
+'''
+
 routerDict = {}
 counter = 0
 
@@ -32,14 +42,7 @@ while(True):
         else:
             routerDict[tmp.address] = [[tmp],[]]
 
-        '''
-        if "C0:25:5C:96:AD:D2" in tmp.address:
-            print "305:", quality," ", signalLebel
-        elif "64:E9:50:71:B6:52" in tmp.address:
-            print "306:", quality," ", signalLebel
-        elif "34:DB:FD:E1:D1:B2 " in tmp.address:
-            print "307:", quality," ", signalLebel
-        '''
+    
     #print("")
 
     counter = counter + 1
@@ -78,3 +81,4 @@ for address in routerDict:
         #print(mean1Quality,"   ", mean2Quality, "  ", mean1signalStrength, "  ",mean2signalStrength)
         print(str(qualityDif) +  "   "+ str(signalStrengthDif)+"  "+ address + "  " + routerDict[address][0][0].ssid)
 
+'''
