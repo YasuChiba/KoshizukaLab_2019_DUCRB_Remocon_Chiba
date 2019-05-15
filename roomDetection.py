@@ -22,12 +22,14 @@ routerList = [WifiRouter(lis[i-2].split()[4],lis[i-1].strip(),lis[i].strip()) fo
 for tmp in routerList:
     #print tmp.ssid, tmp.quality,"    ",  tmp.address
     quality = tmp.quality.split("=")[1].split("/")[0]
+    signalLebel = tmp.quality.split(" ")[1].split("=")[1].split(" ")[0]
+
     if "C0:25:5C:96:AD:D2" in tmp.address:
-        print "305:", quality
+        print "305:", quality," ", signalLebel
     elif "64:E9:50:71:B6:52" in tmp.address:
-        print "306:", quality
+        print "306:", quality," ", signalLebel
     elif "34:DB:FD:E1:D1:B2 " in tmp.address:
-        print "307:", quality
+        print "307:", quality," ", signalLebel
 
     
 
