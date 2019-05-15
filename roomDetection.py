@@ -43,7 +43,7 @@ while(True):
     #print("")
 
     counter = counter + 1
-    if counter == 2:
+    if counter == 4:
         break
 
 print("----------")
@@ -61,7 +61,7 @@ while(True):
             routerDict[tmp.address] = [[],[tmp]]
 
     counter = counter + 1
-    if counter == 2:
+    if counter == 4:
         break
 
 
@@ -75,6 +75,6 @@ for address in routerDict:
 
         qualityDif = mean1Quality - mean2Quality
         signalStrengthDif = mean1signalStrength - mean2signalStrength
-        print(mean1Quality,"   ", mean2Quality, "  ", mean1signalStrength, "  ",mean2signalStrength)
+        #print(mean1Quality,"   ", mean2Quality, "  ", mean1signalStrength, "  ",mean2signalStrength)
         print(str(qualityDif) +  "   "+ str(signalStrengthDif)+"  "+ address + "  " + routerDict[address][0][0].ssid)
 
