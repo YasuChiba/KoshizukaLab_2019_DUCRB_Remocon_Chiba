@@ -1,6 +1,8 @@
 
 import subprocess as spc
-res=spc.check_output("./getWifiSignal.sh")
+
+alias getsi="sudo iwlist wlan0 scan | grep -e ESSID -e Quality"
+res=spc.check_output(getsi)
 lis=res.split()
 ss=lis.index("DUCRB-LAB")
 ss=ss-2
