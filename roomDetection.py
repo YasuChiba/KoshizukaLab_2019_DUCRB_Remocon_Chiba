@@ -10,7 +10,7 @@ class WifiRouter:
     def __init__(self, address, quality, ssid):
         self.address = address 
         self.quality = int(quality.split("=")[1].split("/")[0].strip())
-        self.signalLength = int(quality.split("  ")[1].split("=")[1].split(" ")[0].strip())
+        self.signalStrength = int(quality.split("  ")[1].split("=")[1].split(" ")[0].strip())
         self.ssid = ssid
     
 def getRouterList():
@@ -70,10 +70,10 @@ for address in routerDict:
         mean1Quality = sum([t.quality for t in routerDict[address][0]])/len(routerDict[address][0])
         mean2Quality = sum([t.quality for t in routerDict[address][1]])/len(routerDict[address][1])
 
-        mean1signalLength = sum([t.signalLength for t in routerDict[address][0]])/len(routerDict[address][0])
-        mean2signalLength= sum([t.signalLength for t in routerDict[address][1]])/len(routerDict[address][1])
+        mean1signalStrength = sum([t.signalStrength for t in routerDict[address][0]])/len(routerDict[address][0])
+        mean2signalStrength= sum([t.signalStrength for t in routerDict[address][1]])/len(routerDict[address][1])
 
         qualityDif = mean1Quality - mean2Quality
-        signalLengthDif = mean1signalLength - mean2signalLength
-        print(str(qualityDif) +  "   "+ str(signalLengthDif)+"  "+ address + "  " + routerDict[address][0][0].ssid)
+        signalStrengthDif = mean1signalStrength - mean2signalStrength
+        print(str(qualityDif) +  "   "+ str(signalStrengthDif)+"  "+ address + "  " + routerDict[address][0][0].ssid)
 
