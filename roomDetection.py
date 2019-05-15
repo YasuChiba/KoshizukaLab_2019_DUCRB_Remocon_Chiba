@@ -14,7 +14,7 @@ class WifiRouter:
 
 res=spc.check_output("getsi")
 lis=res.splitlines()
-targetSSIDIndexList = [i for i,s in enumerate(lis) if "DUCRB-LAB" in s]
+targetSSIDIndexList = [i for i,s in enumerate(lis) if "ESSID" in s]
 
 
 routerList = [WifiRouter(lis[i-2].split()[4],lis[i-1].strip(),lis[i].strip()) for i in targetSSIDIndexList]
