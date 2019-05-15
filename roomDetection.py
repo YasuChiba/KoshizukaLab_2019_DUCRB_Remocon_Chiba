@@ -75,5 +75,5 @@ for address in routerDict:
 
         qualityDif = mean1Quality - mean2Quality
         signalLengthDif = mean1signalLength - mean2signalLength
-        print(qualityDif +  "   "+ signalLengthDif+"  "+ address + "  " + routerDict[address][0][0].ssid)
+        print(str(qualityDif) +  "   "+ str(signalLengthDif)+"  "+ address + "  " + routerDict[address][0][0].ssid)
 
