@@ -39,7 +39,7 @@ while(True):
             print "306:", quality," ", signalLebel
         elif "34:DB:FD:E1:D1:B2 " in tmp.address:
             print "307:", quality," ", signalLebel
-            '''
+        '''
     #print("")
 
     counter = counter + 1
@@ -75,5 +75,6 @@ for address in routerDict:
 
         qualityDif = mean1Quality - mean2Quality
         signalStrengthDif = mean1signalStrength - mean2signalStrength
+        print(qualityDif,"   ", signalStrengthDif)
         print(str(qualityDif) +  "   "+ str(signalStrengthDif)+"  "+ address + "  " + routerDict[address][0][0].ssid)
 
