@@ -10,7 +10,7 @@ class WifiRouter:
     def __init__(self, address, quality, ssid):
         self.address = address 
         self.quality = int(quality.split("=")[1].split("/")[0].strip())
-        self.signalLebel = int(quality.split("  ")[1].split("=")[1].split(" ")[0].strip())
+        self.signalLength = int(quality.split("  ")[1].split("=")[1].split(" ")[0].strip())
         self.ssid = ssid
     
 def getRouterList():
@@ -67,8 +67,13 @@ while(True):
 
 for address in routerDict:
     if len(routerDict[address]) == 2 and len(routerDict[address][0]) > 0 and len(routerDict[address][1]) > 0:
-        mean1 = sum([t.quality for t in routerDict[address][0]])/len(routerDict[address][0])
-        mean2 = sum([t.quality for t in routerDict[address][1]])/len(routerDict[address][1])
+        mean1Quality = sum([t.quality for t in routerDict[address][0]])/len(routerDict[address][0])
+        mean2Quality = sum([t.quality for t in routerDict[address][1]])/len(routerDict[address][1])
 
-        print(mean1, "  ", mean2,"  ", address, "  ", routerDict[address][0][0].ssid)
+        mean1signalLength = sum([t.signalLength for t in routerDict[address][0]])/len(routerDict[address][0])
+        mean2signalLength= sum([t.signalLength for t in routerDict[address][1]])/len(routerDict[address][1])
+
+        qualityDif = mean1Quality - mean2Quality
+        signalLengthDif = mean1signalLength - mean2signalLength
+        print(qualityDif +  "   "+ signalLengthDif+"  "+ address + "  " + routerDict[address][0][0].ssid)
 
