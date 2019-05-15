@@ -22,4 +22,4 @@ for t in targetSSIDIndexList:
 routerList = [WifiRouter(lis[i-2],lis[i-1],lis[i]) for i in targetSSIDIndexList]
 
 for tmp in routerList:
-    print tmp.ssid
+    print tmp.address, "  ",tmp.ssid, "  ", tmp.quality
