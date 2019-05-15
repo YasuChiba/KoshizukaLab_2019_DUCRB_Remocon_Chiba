@@ -32,6 +32,7 @@ while(True):
             print "306:", quality," ", signalLebel
         elif "34:DB:FD:E1:D1:B2 " in tmp.address:
             print "307:", quality," ", signalLebel
+    print("")
     time.sleep(5)
 
 
