@@ -1,6 +1,6 @@
 
 import subprocess as spc
-res=spc.check_output("getsi")
+res=spc.check_output("./getWifiSignal.sh")
 lis=res.split()
 ss=lis.index("DUCRB-LAB")
 ss=ss-2
