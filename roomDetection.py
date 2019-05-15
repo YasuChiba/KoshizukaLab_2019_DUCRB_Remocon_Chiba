@@ -20,13 +20,14 @@ targetSSIDIndexList = [i for i,s in enumerate(lis) if "DUCRB-LAB" in s]
 routerList = [WifiRouter(lis[i-2].split()[4],lis[i-1].strip(),lis[i].strip()) for i in targetSSIDIndexList]
 
 for tmp in routerList:
-    print tmp.ssid, tmp.quality,"    ",  tmp.address
-    '''
+    #print tmp.ssid, tmp.quality,"    ",  tmp.address
+    quality = tmp.quality.split("=")[1].split("/")[0]
     if "C0:25:5C:96:AD:D2" in tmp.address:
-        print "305", tmp.quality
+        print "305", quality
     elif "64:E9:50:71:B6:52" in tmp.address:
-        print "306", tmp.quality
+        print "306", quality
     elif "34:DB:FD:E1:D1:B2 " in tmp.address:
-        print "307", tmp.quality   
-    '''
+        print "307", quality
+        
+    
 
