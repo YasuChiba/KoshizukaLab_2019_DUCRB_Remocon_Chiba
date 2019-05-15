@@ -9,9 +9,11 @@ import time
 class WifiRouter:
     def __init__(self, address, quality, ssid):
         self.address = address 
-        self.quality = quality
+        self.quality = quality.split("=")[1].split("/")[0]
+        self.signalLebel = quality.split("  ")[1].split("=")[1].split(" ")[0]
         self.ssid = ssid
-
+    
+    def ge
 
 def getRouterList():
     res=spc.check_output("getsi")
@@ -32,8 +34,6 @@ while(True):
         else:
             routerDict[tmp.address] = [[tmp],[]]
 
-        quality = tmp.quality.split("=")[1].split("/")[0]
-        signalLebel = tmp.quality.split("  ")[1].split("=")[1].split(" ")[0]
         '''
         if "C0:25:5C:96:AD:D2" in tmp.address:
             print "305:", quality," ", signalLebel
@@ -68,8 +68,9 @@ while(True):
 
 
 for address in routerDict:
-    if len(routerDict[address]) == 2:
-        mean1 = sum(routerDict[address][0])/len(routerDict[address][0])
-        mean2 = sum(routerDict[address][0])/len(routerDict[address][0])
+    if len(routerDict[address]) == 2 and len(routerDict[address][0]) > 0 and len(routerDict[address][1]) > 0:
+        mean1 = sum([t.quality for t in routerDict[address][0]])/len(routerDict[address][0])
+        mean2 = sum([t.quality for t in routerDict[address][1]])/len(routerDict[address][1])
+
         print(mean1, "  ", mean2,"  ", address, "  ", routerDict[address][0][0].ssid)
 
