@@ -13,8 +13,6 @@ class WifiRouter:
         self.signalLebel = quality.split("  ")[1].split("=")[1].split(" ")[0]
         self.ssid = ssid
     
-    def ge
-
 def getRouterList():
     res=spc.check_output("getsi")
     lis=res.splitlines()
