@@ -20,7 +20,7 @@ targetSSIDIndexList = [i for i,s in enumerate(lis) if "ESSID" in s]
 routerList = [WifiRouter(lis[i-2].split()[4],lis[i-1].strip(),lis[i].strip()) for i in targetSSIDIndexList]
 
 for tmp in routerList:
-    print tmp.ssid, tmp.quality  tmp.address
+    print tmp.ssid, tmp.quality,"    ",  tmp.address
     '''
     if "C0:25:5C:96:AD:D2" in tmp.address:
         print "305", tmp.quality
