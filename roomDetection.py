@@ -13,13 +13,13 @@ class WifiRouter:
 
 
 res=spc.check_output("getsi")
-print res
 lis=res.splitlines()
-targetSSIDList = [i for i,s in enumerate(lis) if "DUCRB-LAB" in s]
+targetSSIDIndexList = [i for i,s in enumerate(lis) if "DUCRB-LAB" in s]
 
-routerList = []
+for t in targetSSIDIndexList:
+    print(t,"  ", lis[t])
 
-routerList = [WifiRouter(lis[i-2],lis[i-1],lis[i]) for i in targetSSIDList]
+routerList = [WifiRouter(lis[i-2],lis[i-1],lis[i]) for i in targetSSIDIndexList]
 
 for tmp in routerList:
     print tmp.ssid
