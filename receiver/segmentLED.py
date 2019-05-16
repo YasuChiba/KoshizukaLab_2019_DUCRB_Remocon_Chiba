@@ -9,7 +9,7 @@ args = sys.argv
 
 ser = serial.Serial('/dev/serial0', 9600)
 
-roomNumber = int(args[1])
+roomNumber = args[1]
 print(roomNumber)
 ser.write(roomNumber)
 ser.close()
