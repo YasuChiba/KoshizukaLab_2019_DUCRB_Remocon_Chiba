@@ -12,7 +12,9 @@ int D2 = 10;
 int D3 = 11;
 int D4 = 12;
 
-char buffer[3] = {'0','0','0'};
+char buffer[3] = {' ',' ',' '};
+int index = 0;
+int digitPin = 9;
 
 void setup() {          
   Serial.begin(9600);        
@@ -181,28 +183,42 @@ void showNine(int segment) {
   digitalWrite(pinLEDCenter, HIGH);   
 }
 
-void loop() {
-  int index = 0;
+void allOff(int segment) {
+  digitalWrite(D1, segment == D1 ? LOW : HIGH);
+  digitalWrite(D2, segment == D2 ? LOW : HIGH);
+  digitalWrite(D3, segment == D3 ? LOW : HIGH);
+  digitalWrite(D4, segment == D4 ? LOW : HIGH);
   
-  if(Serial.available() > 0) {
-    while(Serial.available() > 0) {    
-      buffer[index] = Serial.read();
-      Serial.print(buffer[index]);
-      Serial.println(".");
-      index += 1;
+  digitalWrite(pinLEDLeftDown, LOW);   
+  digitalWrite(pinLEDBottom, LOW);   
+  digitalWrite(pinLEDRightDown, LOW);   
+  digitalWrite(pinLEDRightUp, LOW);   
+  digitalWrite(pinLEDLeftUp, LOW);   
+  digitalWrite(pinLEDTop, LOW);   
+  digitalWrite(pinLEDCenter, LOW);   
+}
 
+void loop() {
+  index = 0;
+  while(Serial.available() > 0) {    
+      buffer[index] = Serial.read();
+      index += 1;
       if(index > 2) {
         break;
       }
-    }
   }
 
   for(int i = 0; i < 3; i++) {
-    int digitPin = D1;
+    Serial.print(buffer[i]);
+  }
+  Serial.println();
+
+  for(int i = 0; i < 3; i++) {
+    digitPin = D3;
     if(i == 1) {
       digitPin = D2;
     } else if(i == 2) {
-      digitPin = D3;
+      digitPin = D1;
     } 
 
     if(buffer[i] == '0') {
@@ -225,7 +241,9 @@ void loop() {
       showEight(digitPin);
     } else if (buffer[i] == '9') {
       showNine(digitPin);
+    } else {
+      allOff(digitPin);
     }
-    delay(1);
+    delay(5);
   }
 }
