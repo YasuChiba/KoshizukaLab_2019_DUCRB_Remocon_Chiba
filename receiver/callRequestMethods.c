@@ -28,5 +28,7 @@ void controllLight(int isTurnOn, int roomNumber) {
     snprintf(command, 40, "python sendRequestPython.py %d %d %d", 0, isTurnOn == 1, roomNumber);
     printf("start sending light controll command\n");
     printf("%s \n", command);
+
+    system("python segmentLED.py 305");
     system(command);
 }
